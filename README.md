@@ -9,8 +9,9 @@ RSpec and Shoulda-Matchers have been installed and set up.
 1. fork this repo
 2. clone your fork
 3. `git clone <paste_repo>`
-4. `cd b2-mid-mod`
+4. `cd <repo_name>`
 5. `bundle install`
+6. `rails db:{drop,create,migrate,seed}`
 
 ## Instructions
 
@@ -48,9 +49,13 @@ Some of the initial migrations and model set up has been done for you.
 * Hospitals have a 'name'
   * Ex: name: "Grey Sloan Memorial Hospital"
 * Doctors have a name, specialty, and university that they attended
-  * Ex: name: "Miranda Bailey", specialty: "General Surgery", education: "Stanford University"
+  * Ex: name: "Miranda Bailey", specialty: "General Surgery", university: "Stanford University"
 * Patients have a name and an age
   * Ex: name: "Denny Duquette", age: 39
+* Hospitals have many Doctors
+* Doctors belong to a Hospital
+* Doctors can have many patients
+* Patients can have many doctors
 
 ## User Stories
 

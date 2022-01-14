@@ -20,11 +20,15 @@ ActiveRecord::Schema.define(version: 2021_06_14_205253) do
     t.string "specialty"
     t.string "university"
     t.bigint "hospital_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["hospital_id"], name: "index_doctors_on_hospital_id"
   end
 
   create_table "hospitals", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "doctors", "hospitals"

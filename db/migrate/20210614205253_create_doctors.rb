@@ -5,6 +5,8 @@ class CreateDoctors < ActiveRecord::Migration[5.2]
       t.string :specialty
       t.string :university
       t.references :hospital, foreign_key: true
+
+      t.timestamps
     end
   end
 end
