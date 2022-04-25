@@ -48,7 +48,7 @@ RSpec.describe 'doctors show page' do
     expect(page).to have_content('Liz Hagler')
 
     click_button "Remove Justin Hill"
-    expect(current_path).to eq("hospitals/doctors/#{doc_1.id}")
+    expect(current_path).to eq("/hospitals/doctors/#{doc_1.id}")
 
     expect(page).to have_no_content('Justin Hill')
     expect(page).to have_content('Mark Gainey')
