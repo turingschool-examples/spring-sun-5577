@@ -57,6 +57,8 @@ RSpec.describe 'doctor show page' do
     end
     expect(current_path).to eq("/doctors/#{doctor_1.id}")
     expect(page).to_not have_content(patient_1.name)
+    expect(patient_1.name).to eq('John')
+    expect(doctor_1.patients.count).to eq(2)
 
     within "#patient-#{patient_2.id}" do
       click_link 'Remove Patient'
@@ -69,6 +71,5 @@ RSpec.describe 'doctor show page' do
     end
     expect(current_path).to eq("/doctors/#{doctor_1.id}")
     expect(page).to_not have_content(patient_3.name)
-
   end
 end
