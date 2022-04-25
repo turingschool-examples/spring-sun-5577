@@ -4,6 +4,7 @@ RSpec.describe Hospital do
   describe 'relationships' do
     it { should have_many(:doctors) }
   end
+  
   describe 'instance methods' do 
     describe '.unique_universities' do 
       it 'returns a unique list of universities that doctors of a hospital attended' do 
