@@ -69,6 +69,16 @@ RSpec.describe 'doctors show page' do
         expect(page).not_to have_content("Mikey Palmice")
         expect(page).not_to have_content("Ralphie Cifaretto")
       end
+
+      it 'when i click that button, the patient should still exist, just not in relation to that doctor' do
+        within "#patient-#{@patient_2.id}" do
+          click_button("Remove this Patient from Caseload")
+        end
+
+        visit "/patients/#{@patient_2.id}"
+
+        expect(page).to have_content(@patient_2.name)
+      end
     end
   end
 end
