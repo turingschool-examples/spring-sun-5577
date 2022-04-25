@@ -46,4 +46,24 @@ RSpec.describe "Doctor Show Page" do
     expect(page).to_not have_content("Testy Tom")
     expect(page).to_not have_content("Rspec Richard")
   end
+
+  it 'has a button to remove patient from doctor that redirects to doctor show page' do
+    visit "/doctors/#{@doctor_1.id}"
+
+    within('div#patient-list') do
+      expect(page).to have_button("Delete #{@patient_1.name}")
+    end
+  end
+
+  it 'deletes the patient record entirely' do
+    visit "/doctors/#{@doctor_1.id}"
+
+    within("div#patient-list") do
+      click_button("Delete #{@patient_1.name}")
+    end
+
+    expect(page).to_not have_content("Buda Bobby")
+
+    expect(current_path).to eq("/doctors/#{@doctor_1.id}/")
+  end
 end
