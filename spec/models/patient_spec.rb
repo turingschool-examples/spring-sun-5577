@@ -7,6 +7,7 @@ describe Patient, type: :model do
   end
 
   describe 'relationships' do
-    xit {should have_many(:doctors)}
+    it {should have_many(:doctors)}
+    it {should have_many(:doctor_patients)}
   end
 end
