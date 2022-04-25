@@ -6,11 +6,10 @@
   Hospital: <%= @doctor.hospital.name %>
   <br>
   Patients:
-  <br>
-  <div class="patients"<
+  <div class="patients">
   <% @doctor.patients.each do |patient| %>
   <ul>
-    <%= patient.name %>
-  <ul>
+    <li><%= patient.name %></li>
+  </ul>
   <% end %>
   </div>
