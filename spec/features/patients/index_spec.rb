@@ -13,13 +13,33 @@ RSpec.describe 'Patients Index Page' do
     patient_1_info = "#{patient_1.name}, Age #{patient_1.age}"
     patient_2_info = "#{patient_2.name}, Age #{patient_2.age}"
     patient_3_info = "#{patient_3.name}, Age #{patient_3.age}"
-    patient_1_info = "#{patient_4.name}, Age #{patient_4.age}"
+    patient_4_info = "#{patient_4.name}, Age #{patient_4.age}"
 
     within "#patients" do
-      expect(page).to have_content(patient_1_info)
-      expect(page).to have_content(patient_2_info)
-      expect(page).to have_content(patient_3_info)
-      expect(page).to have_content(patient_4_info)
+      within "#patient-#{patient_1.id}" do
+        expect(page).to have_content(patient_1_info)
+        expect(page).to_not have_content(patient_2_info)
+        expect(page).to_not have_content(patient_3_info)
+        expect(page).to_not have_content(patient_4_info)
+      end
+      within "#patient-#{patient_2.id}" do
+        expect(page).to_not have_content(patient_1_info)
+        expect(page).to have_content(patient_2_info)
+        expect(page).to_not have_content(patient_3_info)
+        expect(page).to_not have_content(patient_4_info)
+      end
+      within "#patient-#{patient_3.id}" do
+        expect(page).to_not have_content(patient_1_info)
+        expect(page).to_not have_content(patient_2_info)
+        expect(page).to have_content(patient_3_info)
+        expect(page).to_not have_content(patient_4_info)
+      end
+      within "#patient-#{patient_4.id}" do
+        expect(page).to_not have_content(patient_1_info)
+        expect(page).to_not have_content(patient_2_info)
+        expect(page).to_not have_content(patient_3_info)
+        expect(page).to have_content(patient_4_info)
+      end
     end
   end
 end
