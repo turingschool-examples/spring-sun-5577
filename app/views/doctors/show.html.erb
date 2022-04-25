@@ -1,0 +1,10 @@
+<h1>Doctor Info Page</h1>
+
+<p>Doctor Name: <%= @doctor.name %></p>
+<p>Doctor Specialty: <%= @doctor.specialty %></p>
+<p>Doctor University: <%= @doctor.university %></p>
+<p>Hospital Name: <%= @doctor.hospital.name %></p>
+<% @doctor.patients.each do |patient| %>
+  Patient: <%= patient.name  %>
+  <%= button_to "Remove Patient from Caseload", "doctor_patients/#{@doctor.id}, method: :patch" %>
+<% end %>
