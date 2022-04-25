@@ -8,7 +8,7 @@ RSpec.describe 'the hospital show page', type: :feature do
     doctor_3 = hospital_1.doctors.create!(name: "Steve Stone", specialty: "Pediatric Medicine", university: "Medex Washington")
     doctor_4 = hospital_1.doctors.create!(name: "Lex Luthor", specialty: "Superman Medicine", university: "Medex Washington")
     doctor_5 = hospital_1.doctors.create!(name: "Harvey Dent", specialty: "Plastic Surgery", university: "Gotham University")
-
+# require 'pry'; binding.pry
     visit "/hospitals/#{hospital_1.id}"
   end
 
