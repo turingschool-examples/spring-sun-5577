@@ -1,0 +1,12 @@
+<h1>Doctor Info:</h1>
+<p><strong>Name:</strong> <%= @doctor.name %></p>
+<p><strong>Specialty:</strong> <%= @doctor.specialty %></p>
+<p><strong>University:</strong> <%= @doctor.university %></p>
+<p><strong>Hospital:</strong><%= @doctor.hospital.name %></p>
+<p><strong>Patients:</strong>
+<% @doctor.patients.each_with_index do |patient, index| %>
+  <section id = "patient-<%= patient.id %>">
+  <p><%= patient.name %> 
+  	<%= button_to 'Delete Patient', doctor_patient_path(patient_id:patient.id, doctor_id: @doctor.id), method: :delete %></p>
+  </section>
+<% end %>
