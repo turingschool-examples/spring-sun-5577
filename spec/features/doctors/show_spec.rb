@@ -53,5 +53,7 @@ RSpec.describe 'doctors show page' do
     expect(page).to have_no_content('Justin Hill')
     expect(page).to have_content('Mark Gainey')
     expect(page).to have_content('Liz Hagler')
+
+    expect(Patient.all.include?(pat_1)).to eq(true)
   end
 end
