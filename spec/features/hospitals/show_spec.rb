@@ -17,7 +17,6 @@ RSpec.describe "hospitals show page" do
   end
 
   it "shows a hospital's name, the number of associated doctors, and a list of unique doctors' universities" do
-save_and_open_page
     expect(page).to have_content(@hospital_1.name)
     expect(page).not_to have_content(@hospital_2.name)
 
