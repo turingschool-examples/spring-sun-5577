@@ -11,7 +11,7 @@ RSpec.describe 'Doctor show' do
 
     patient3 = Patient.create!(name:"Pam", age: 22)
     doctor2 = Doctor.create!(name: "Bad Doc", specialty: "ENT", university: "UC", hospital: hospital)
-    doctorpatient2 = DoctorPatient.create!(doctor: doctor2, patient: patient3)
+    doctorpatient3 = DoctorPatient.create!(doctor: doctor2, patient: patient3)
     visit "/doctors/#{doctor.id}/"
       within("#doctor-info") do
 

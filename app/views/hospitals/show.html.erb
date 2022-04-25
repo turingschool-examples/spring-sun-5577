@@ -1,0 +1,12 @@
+<h1>Hospital Show</h1>
+
+<div id="hospital-doctors">
+  <p>Number of doctors: <%=@hospital.number_of_doctors%> </p>
+</div>
+
+<div id="hospital-doctors-universities">
+  <p>Doctors' Universities:</p>
+  <% @hospital.list_doctor_universities.each do |university| %>
+    <p><%= university %></p>
+  <% end %>
+</div>
