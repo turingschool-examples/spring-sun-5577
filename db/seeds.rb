@@ -1,6 +1,9 @@
 Patient.destroy_all
 Doctor.destroy_all
 Hospital.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('patients')
+ActiveRecord::Base.connection.reset_pk_sequence!('doctors')
+ActiveRecord::Base.connection.reset_pk_sequence!('hospitals')
 
 @hospital = Hospital.create!(name: "Grey Sloan Memorial Hospital")
 @hospital1 = Hospital.create!(name: "Not my Hospital")
