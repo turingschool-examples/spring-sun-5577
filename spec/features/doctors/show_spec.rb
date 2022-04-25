@@ -36,16 +36,16 @@ describe 'doctor show page', type: :feature do
       hospital_id: @hospital_1.id
     )
 
-    @patient_3 = Patient.new(name: "Jack", age: 54)
-    @patient_4 = Patient.new(name: "Trey", age: 31)
-    @patient_2 = Patient.new(name: "Scotty", age: 29)
-    @patient_6 = Patient.new(name: "Chris", age: 29)
+    @patient_3 = Patient.create!(name: "Jack", age: 54)
+    @patient_4 = Patient.create!(name: "Trey", age: 31)
+    @patient_2 = Patient.create!(name: "Scotty", age: 29)
+    @patient_6 = Patient.create!(name: "Chris", age: 29)
 
 
-    @doctor_patient_1 = DoctorPatient.new(doctor_id: @doctor_3.id, patient_id: @patient_3.id)
-    @doctor_patient_2 = DoctorPatient.new(doctor_id: @doctor_3.id, patient_id: @patient_4.id)
-    @doctor_patient_3 = DoctorPatient.new(doctor_id: @doctor_2.id, patient_id: @patient_2.id)
-    @doctor_patient_4 = DoctorPatient.new(doctor_id: @doctor_2.id, patient_id: @patient_6.id)
+    @doctor_patient_1 = DoctorPatient.create!(doctor_id: @doctor_3.id, patient_id: @patient_3.id)
+    @doctor_patient_2 = DoctorPatient.create!(doctor_id: @doctor_3.id, patient_id: @patient_4.id)
+    @doctor_patient_3 = DoctorPatient.create!(doctor_id: @doctor_2.id, patient_id: @patient_2.id)
+    @doctor_patient_4 = DoctorPatient.create!(doctor_id: @doctor_2.id, patient_id: @patient_6.id)
 
     visit doctor_path(@doctor_3)
   end
@@ -62,6 +62,36 @@ describe 'doctor show page', type: :feature do
         expect(page).to_not have_content(@doctor_2.specialty)
         expect(page).to_not have_content(@doctor_2.university)
         expect(page).to_not have_content(@hospital_1.name)
+      end
+
+      visit doctor_path(@doctor_2)
+      within "#doctor-info" do
+        expect(page).to have_content(@doctor_2.name)
+        expect(page).to have_content(@doctor_2.specialty)
+        expect(page).to have_content(@doctor_2.university)
+        expect(page).to have_content(@hospital_1.name)
+
+        expect(page).to_not have_content(@doctor_9.name)
+        expect(page).to_not have_content(@doctor_9.specialty)
+        expect(page).to_not have_content(@doctor_9.university)
+        expect(page).to_not have_content(@hospital_2.name)
+      end
+    end
+
+    it "shows all patients the doctor has" do
+      within "#patients" do
+        expect(page).to have_content(@patient_4.name)
+        expect(page).to have_content(@patient_3.name)
+        expect(page).to_not have_content(@patient_6.name)
+        expect(page).to_not have_content(@patient_2.name)
+      end
+
+      visit doctor_path(@doctor_2)
+      within "#patients" do
+        expect(page).to have_content(@patient_2.name)
+        expect(page).to have_content(@patient_6.name)
+        expect(page).to_not have_content(@patient_3.name)
+        expect(page).to_not have_content(@patient_4.name)
       end
     end
   end
