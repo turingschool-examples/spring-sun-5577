@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Patients Index Page' do
 
-  it 'Contains all patients in descending order of age' do
+  it 'Contains all patients' do
     patient_1 = Patient.create(name: "Edge", age: 43)
     patient_2 = Patient.create(name: "Kenny Omega", age: 36)
     patient_3 = Patient.create(name: "Sting", age: 65)
@@ -20,19 +20,6 @@ RSpec.describe 'Patients Index Page' do
       expect(page).to have_content(patient_2_info)
       expect(page).to have_content(patient_3_info)
       expect(page).to have_content(patient_4_info)
-
-      expect(patient_3_info).to appear_before(patient_1_info)
-      expect(patient_3_info).to appear_before(patient_2_info)
-      expect(patient_3_info).to appear_before(patient_4_info)
-      expect(patient_1_info).to_not appear_before(patient_3_info)
-      expect(patient_1_info).to appear_before(patient_2_info)
-      expect(patient_1_info).to appear_before(patient_4_info)
-      expect(patient_2_info).to_not appear_before(patient_1_info)
-      expect(patient_2_info).to_not appear_before(patient_3_info)
-      expect(patient_2_info).to appear_before(patient_4_info)
-      expect(patient_4_info).to_not appear_before(patient_2_info)
-      expect(patient_4_info).to_not appear_before(patient_1_info)
-      expect(patient_4_info).to_not appear_before(patient_3_info)
     end
   end
 end
