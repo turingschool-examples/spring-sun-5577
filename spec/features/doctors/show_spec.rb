@@ -95,12 +95,14 @@ describe 'doctor show page', type: :feature do
       end
     end
 
-    it 'has a link to remove patient'
-      within "#patient-#{@patient_4.id}" do
+    it 'has a link to remove patient' do
+      within "#patient-#{@doctor_patient_2.id}" do
+        save_and_open_page
+
         expect(page).to have_button("Remove #{@patient_4.name}")
       end
 
-      within "#patient-#{@patient_3.id}" do
+      within "#patient-#{@doctor_patient_1.id}" do
         expect(page).to have_button("Remove #{@patient_3.name}")
       end
     end
@@ -116,3 +118,4 @@ describe 'doctor show page', type: :feature do
       end
     end
   end
+end
