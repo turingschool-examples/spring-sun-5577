@@ -4,6 +4,7 @@ RSpec.describe 'the doctor show page', type: :feature do
   before do
     hospital_1 = Hospital.create!(name: "General Hospital")
     doctor_1 = hospital_1.doctors.create!(name: "Garth Marengi", specialty: "Emergency Medicine", university: "Darkplace University")
+    doctor_2 = hospital_1.doctors.create!(name: "Steve Stone", specialty: "Pediatric Medicine", university: "Medex Washington")
     patient_1 = Patient.create!(name: "Alex", age: 38)
     patient_2 = Patient.create!(name: "Bob", age: 28)
     patient_3 = Patient.create!(name: "Chuck", age: 18)
@@ -15,13 +16,14 @@ RSpec.describe 'the doctor show page', type: :feature do
     doc_pat_4 = DoctorPatient.create!(doctor_id: doctor_1.id, patient_id: patient_4.id)
     doc_pat_5 = DoctorPatient.create!(doctor_id: doctor_1.id, patient_id: patient_5.id)
 
-    # visit "/doctors/#{doctor_1.id}"
-    # require 'pry'; binding.pry
+
     visit doctor_path(doctor_1)
   end
 
   it 'I see all of that doctors information and the name of the hospital where this doctor works and all of the names of the patients this doctor has' do
     expect(page).to have_content("Garth Marengi")
+    expect(page).to_not have_content("Steve Stone")
+
     expect(page).to have_content("Emergency Medicine")
     expect(page).to have_content("Darkplace University")
     expect(page).to have_content("General Hospital")
