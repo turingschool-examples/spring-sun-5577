@@ -5,13 +5,13 @@ RSpec.describe 'Doctors Show Page', type: :feature do
     @hospital1 = Hospital.create!(name: "Not my Hospital")
     @doc = @hospital.doctors.create!(name: "Miranda Bailey", specialty: "General Surgery", university: "Stanford University")
     @doc1 = @hospital.doctors.create!(name: "Paul", specialty: "General Surgery", university: "Webster University")
-    @denny = @doc.patients.create!(name: "Denny Duquette", age: 39)
-    @john = @doc.patients.create!(name: "John", age: 49)
-    @ringo = @doc1.patients.create!(name: "Ringo", age: 70)
+    @denny = Patient.create!(name: "Denny Duquette", age: 39 )
+    @john = Patient.create!(name: "John", age: 49)
+    @ringo = Patient.create!(name: "Ringo", age: 70)
 
-    @dp = DoctorPatient.create!(doctor_id:@doc.id, patient_id:@denny.id)
+    @dp = DoctorPatient.create!(doctor_id: @doc.id, patient_id: @denny.id)
     @dp2 = DoctorPatient.create!(doctor_id:@doc.id, patient_id:@john.id)
-    @dp3 = DoctorPatient.create!(doctor_id:@doc.id, patient_id:@ringo.id)
+    @dp3 = DoctorPatient.create!(doctor_id:@doc1.id, patient_id:@ringo.id)
 
   end
 
@@ -31,7 +31,7 @@ RSpec.describe 'Doctors Show Page', type: :feature do
     end
   end
 
-  xit 'deletes a patient' do
+  it 'deletes a patient' do
     visit doctor_path(@doc.id)
 
     within("#doc-#{@doc.id}") do
@@ -47,8 +47,8 @@ RSpec.describe 'Doctors Show Page', type: :feature do
     end
 
     click_on("Delete #{@denny.name}")
-    save_and_open_page
     expect(current_path).to eq(doctor_path(@doc))
-
+    expect(page).to_not have_content("#{@denny.name}")
+    expect(page).to have_content("#{@john.name}")
   end
 end
