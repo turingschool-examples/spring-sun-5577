@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :hospitals, only: [:show] do
+    resources :doctors, only: [:show]
+  end
+
+  delete "/doctor_patients", to: "doctor_patients#destroy"
+
+  resources :patients, only: [:index]
 end
