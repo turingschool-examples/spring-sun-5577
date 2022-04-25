@@ -50,24 +50,24 @@ RSpec.describe 'doctor show page' do
     patient_2 = doctor_1.patients.create!(name: 'Mary', age: 25)
     patient_3 = doctor_1.patients.create!(name: 'Dave', age: 60)
 
-    visit "doctors/#{doctor_1.id}"
+    visit "/doctors/#{doctor_1.id}"
 
     within "#patient-#{patient_1.id}" do
       click_link 'Remove Patient'
     end
-    expect(current_path).to eq("doctors/#{doctor_1.id}")
+    expect(current_path).to eq("/doctors/#{doctor_1.id}")
     expect(page).to_not have_content(patient_1.name)
 
     within "#patient-#{patient_2.id}" do
       click_link 'Remove Patient'
     end
-    expect(current_path).to eq("doctors/#{doctor_1.id}")
+    expect(current_path).to eq("/doctors/#{doctor_1.id}")
     expect(page).to_not have_content(patient_2.name)
 
     within "#patient-#{patient_3.id}" do
       click_link 'Remove Patient'
     end
-    expect(current_path).to eq("doctors/#{doctor_1.id}")
+    expect(current_path).to eq("/doctors/#{doctor_1.id}")
     expect(page).to_not have_content(patient_3.name)
 
   end

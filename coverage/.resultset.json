@@ -246,6 +246,8 @@
           1,
           null,
           1,
+          null,
+          1,
           null
         ]
       },
@@ -383,7 +385,7 @@
         "lines": [
           1,
           1,
-          2,
+          5,
           null,
           null
         ]
@@ -391,6 +393,19 @@
       "/Users/chrisromero/turing/2module/challenges/spring-sun-5577/app/controllers/application_controller.rb": {
         "lines": [
           1,
+          null
+        ]
+      },
+      "/Users/chrisromero/turing/2module/challenges/spring-sun-5577/app/controllers/doctor_patients_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          3,
+          3,
+          3,
+          3,
+          null,
           null
         ]
       },
@@ -404,6 +419,6 @@
         ]
       }
     },
-    "timestamp": 1650907765
+    "timestamp": 1650909057
   }
 }
