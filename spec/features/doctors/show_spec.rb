@@ -56,7 +56,7 @@ RSpec.describe 'Doctors Show Page' do
       docpat4 = DoctorPatient.create!(doctor_id: doc2.id, patient_id: pat4.id)
       
       visit "/doctors/#{doc1.id}"
-
+      save_and_open_page
       expect(page).to have_content("Current Patients: ")
 
       within "#patient-#{pat1.id}" do
