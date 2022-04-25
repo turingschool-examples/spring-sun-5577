@@ -1,11 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Patient, type: :model do
-  describe "relationships" do
-    it { should have_many(:doctor_patients) }
-    it { should have_many(:doctors).through(:doctor_patients) }
-  end
-
+RSpec.describe "Patient Index Page" do
   before :each do
     @hospital = Hospital.create!(name: "Grey Sloan Memorial Hospital")
     @hospital2 = Hospital.create!(name: "Denver Health Hospital")
@@ -27,7 +22,13 @@ RSpec.describe Patient, type: :model do
     @docpat5 = DoctorPatient.create!(doctor: @doc2, patient: @patient1)
     @docpat6 = DoctorPatient.create!(doctor: @doc2, patient: @patient5)
   end
-  it "can sort patients by age desc" do
-    expect(Patient.age_desc).to eq([@patient5, @patient2, @patient1, @patient3, @patient4])
+
+  it "lists all patients from oldest to youngest" do
+    visit patients_path
+
+    # expect(@patient5.name).to appear_before(@patient2.name)
+    # expect(@patient2.name).to appear_before(@patient1.name)
+    # expect(@patient1.name).to appear_before(@patient4.name)
+    # expect(@patient4.name).to appear_before(@patient3.name)
   end
 end
