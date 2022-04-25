@@ -18,17 +18,22 @@ RSpec.describe 'doctor show page' do
     patient_1 = doctor_1.patients.create!(name: 'John', age: 30)
     patient_2 = doctor_1.patients.create!(name: 'Mary', age: 25)
     patient_3 = doctor_1.patients.create!(name: 'Dave', age: 60)
-    visit "doctor/#{doctor_1.id}"
+    patient_4 = doctor_2.patients.create!(name: 'Dave', age: 60)
+    
+    visit "doctors/#{doctor_1.id}"
 
     expect(page).to have_content('Chris')
     expect(page).to have_content('ER')
     expect(page).to have_content('UT')
     expect(page).to have_content('UC Denver')
+    expect(page).to have_content('John')
+    expect(page).to have_content('Mary')
+    expect(page).to have_content('Dave')
 
     expect(page).to_not have_content('Sophie')
     expect(page).to_not have_content('PCP')
     expect(page).to_not have_content('Harvard')
     expect(page).to_not have_content('SLC')
-
+    expect(page).to_not have_content('James')
   end
 end
