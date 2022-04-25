@@ -4,5 +4,8 @@
 <p>Specialty: <%= "#{@doctor.specialty}" %></p>
 <p>University: <%= "#{@doctor.university}" %></p>
 <% @doctor.patients.each do |patient| %>
-  <p><%= patient.name %></p>
+  <p>
+    <%= patient.name %>
+    <%= button_to "Remove #{patient.name}", "/doctors/#{@doctor.id}?name=#{patient.name}",method: :patch %>
+  </p>
 <% end %>
