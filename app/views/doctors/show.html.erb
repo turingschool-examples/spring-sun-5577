@@ -5,8 +5,9 @@
 <p><strong>University:</strong> <%= @doctor.university %></p>
 
 <h3>Patients:</h3>
-<div id='patients'
-  <% @doctor.patients.each do |patient| %>
-    <p><%= patient.name %><p>
-  <% end %>
-</div>
+<% @doctor.patients.each do |patient| %>
+  <div id="patient-<%= patient.id %>">
+    <p><%= patient.name %></p>
+    <%= link_to "Remove #{patient.name}", "/doctors/#{@doctor.id}/patients/#{patient.id}/destroy" %>
+  </div>
+<% end %>
