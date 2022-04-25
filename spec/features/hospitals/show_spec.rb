@@ -21,6 +21,12 @@ describe "doctor show page" do
 
   it "displays doctor count" do
     expect(page).to have_content("Doctors: 3")
-    expect(page).not_to have_content("Nothing Hospy")
+  end
+
+  it "displays unique list of doc universities" do
+    expect(page).to have_content("Dartmouth", count: 1)
+    expect(page).to have_content("School U", count: 1)
+
+    expect(page).not_to have_content("Uncool U")
   end
 end
