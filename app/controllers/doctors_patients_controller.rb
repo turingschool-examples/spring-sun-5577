@@ -1,5 +1,6 @@
 class DoctorsPatientsController < ApplicationController
 
+  #This delete call should work both ways, either with a patient being searched for a matching doctor_id association, or a doctor being searched for a matching patient_id association.
   def delete
     patient = Patient.find(params[:id])
 
