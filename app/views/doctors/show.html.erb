@@ -1,0 +1,20 @@
+<h1>Doctor Show Page</h1>
+
+Name: <%= @doctor.name %><br>
+Specialty: <%= @doctor.specialty %><br>
+University: <%= @doctor.university %><br>
+Current Hospital: <%= @doctor.hospital.name %><br><br>
+
+<section id="all_patients">
+Current Patients: <% @doctor.doctor_patients.each do |doc_patient| %>
+
+<section id="patient-<%= doc_patient.patient.id%>">
+
+  <%= doc_patient.patient_name %><br>
+
+  <%= button_to "Remove This Patient", "/doctors/#{@doctor.id}", method: :delete, params: {doc_patient_id: "#{doc_patient.id}"} %>
+
+</section>
+
+<% end %>
+</section>

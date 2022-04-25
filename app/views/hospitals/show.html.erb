@@ -1,0 +1,15 @@
+<h1>Hospital Show Page</h1>
+
+
+Hospital Name: <%= @hospital.name %><br>
+Number of Current Doctors: <%= @hospital.doctors.count %><br>
+
+
+<section id="universities">
+
+Universities Our Doctors Have Attended: <% @hospital.unique_universities.each do |university| %>
+
+ <li> <%= university %> </li>
+
+<% end %>
+</section>
