@@ -28,4 +28,30 @@ RSpec.describe 'doctor show page' do
 	expect(page).to_not have_content(hospital2.name)
 	expect(page).to_not have_content(patient3.name)
   end
+
+  it 'has a button to remove a patient' do 
+	hospital1 = Hospital.create!(name: 'The Mayo Clinic')
+	christina = hospital1.doctors.create!(name: "Cristina Yang", specialty: "Cardiothoracic Surgery", university: "Stanford University")
+	patient1 = Patient.create!(name: 'Katie Bryce', age: 25)
+	patient2 = Patient.create!(name: 'Denny Duquette', age: 30)
+	patient3 = Patient.create!(name: 'Cece Colvin', age: 18)
+	DoctorPatient.create!(doctor: christina, patient: patient1)
+	DoctorPatient.create!(doctor: christina, patient: patient2)
+	DoctorPatient.create!(doctor: christina, patient: patient3)
+
+	visit doctor_path(christina.id)
+
+	expect(page).to have_content(patient1.name)
+	expect(page).to have_content(patient2.name)
+	expect(page).to have_content(patient3.name)		
+
+	within("#patient-#{patient1.id}") do 
+	  click_button 'Delete Patient'
+
+	  expect(current_path).to eq doctor_path(christina.id)
+	end
+	 expect(page).to_not have_content(patient1.name)
+	 expect(page).to have_content(patient2.name)
+	 expect(page).to have_content(patient3.name)	
+  end
 end

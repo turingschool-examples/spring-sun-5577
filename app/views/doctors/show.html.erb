@@ -5,9 +5,8 @@
 <p><strong>Hospital:</strong><%= @doctor.hospital.name %></p>
 <p><strong>Patients:</strong>
 <% @doctor.patients.each_with_index do |patient, index| %>
-	<% if index == @doctor.patients.count-1 %>
-		<%= patient.name %>
-	<% else %>
-		<%= patient.name %>, 
-	<% end %>
-<% end %></p>
+  <section id = "patient-<%= patient.id %>">
+  <p><%= patient.name %> 
+  	<%= button_to 'Delete Patient', patient_path(patient.id, doctor_id: @doctor.id), method: :delete %></p>
+  </section>
+<% end %>
