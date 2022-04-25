@@ -17,7 +17,6 @@ RSpec.describe 'Patients Indx Page' do
       bob = doctor_2.patients.create!(name: 'Bob', age: 40)
 
       visit "/patients"
-      save_and_open_page
       expect(bob.name).to appear_before(glen.name)
       expect(glen.name).to appear_before(paul.name)
       expect(paul.name).to appear_before(joe.name)
