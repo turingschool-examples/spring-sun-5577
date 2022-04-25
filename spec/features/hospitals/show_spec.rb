@@ -33,6 +33,7 @@ RSpec.describe 'A hospital show page' do
 
     d_health = Hospital.create!(name: "Denver Health")
     phil = d_health.doctors.create!(name: 'Dr. Phil', specialty: 'Humiliation', university: 'CBS')
+
     visit "/hospitals/#{anthonys.id}"
 
     within '#universities' do
