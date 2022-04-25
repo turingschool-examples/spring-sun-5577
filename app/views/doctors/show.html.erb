@@ -8,6 +8,7 @@
 
 <h2>Patients</h2>
 <% @doc.patients.each do |patient| %>
-<p> <%= link_to("#{patient.name}", patient_path(patient)) %> </p>
+<p> <%= patient.name %> </p>
+<%= link_to "Delete #{patient.name}", patient_path(patient), method: :delete %>
 <% end %>
 </div>
