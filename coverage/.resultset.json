@@ -244,6 +244,8 @@
           null,
           null,
           1,
+          null,
+          1,
           null
         ]
       },
@@ -279,8 +281,8 @@
           null,
           1,
           null,
-          0,
-          0,
+          1,
+          1,
           0,
           0,
           0,
@@ -330,6 +332,20 @@
           1,
           2,
           null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       },
@@ -337,6 +353,11 @@
         "lines": [
           1,
           1,
+          null,
+          1,
+          2,
+          8,
+          null,
           null
         ]
       },
@@ -382,8 +403,17 @@
           1,
           null
         ]
+      },
+      "/Users/chrisromero/turing/2module/challenges/spring-sun-5577/app/controllers/hospitals_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1650906253
+    "timestamp": 1650907056
   }
 }
