@@ -34,4 +34,12 @@ RSpec.describe 'the doctor show page', type: :feature do
       expect(page).to have_content("Jessica")
     end
   end
+
+  it 'next to each patients name is a button to remove that patient, when I click that button for one patient I am brought back to the doctors show page and I no longer see that patients name listed' do
+    within("#patients") do
+      expect(page).to have_button("Remove Alex")
+      click_button("Remove Alex")
+      expect(current_path).to eq("/doctors/#{doctor_1.id}")
+      expect(page).to_not have_content("Alex")
+  end
 end
