@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2022_04_25_152118) do
   create_table "patient_doctors", force: :cascade do |t|
     t.bigint "doctor_id"
     t.bigint "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_patient_doctors_on_doctor_id"
     t.index ["patient_id"], name: "index_patient_doctors_on_patient_id"
   end
@@ -41,6 +43,8 @@ ActiveRecord::Schema.define(version: 2022_04_25_152118) do
   create_table "patients", force: :cascade do |t|
     t.string "name"
     t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "doctors", "hospitals"
