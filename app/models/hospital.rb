@@ -6,8 +6,7 @@ class Hospital < ApplicationRecord
   end
 
   def unique_university_names
-    doctors.select(:university)
-           .group(:university)
+    doctors.group(:university)
            .pluck(:university)
   end
 end
