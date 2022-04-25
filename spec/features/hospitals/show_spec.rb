@@ -52,12 +52,21 @@ describe 'hospital show page', type: :feature do
 
   describe 'display' do
     it 'shows info of the hospital' do
-      within "hospital-info" do
-        expect(page).to have_content(hospital_1.name)
-        expect(page).to have_content("Doctor Count: #{hospital_1.doctors.count}")
+        expect(page).to have_content(@hospital_1.name)
+        expect(page).to have_content("Doctor Count: #{@hospital_1.doctors.count}")
 
-        expect(page).to_not have_content(hospital_2.name)
-        expect(page).to_not have_content("Doctor Count: #{hospital_2.doctors.count}")
+        expect(page).to_not have_content(@hospital_2.name)
+        expect(page).to_not have_content("Doctor Count: #{@hospital_2.doctors.count}")
+    end
+
+    it 'shows .unqiue_universities of each hospital' do
+      within "#universities" do
+        expect(page).to have_content(@hospital_1.unique_universities[0])
+        expect(page).to have_content(@hospital_1.unique_universities[1])
+save_and_open_page
+        expect(page).to_not have_content(@hospital_2.unique_universities[0])
+        expect(page).to_not have_content(@hospital_2.unique_universities[1])
+        expect(page).to_not have_content(@hospital_2.unique_universities[2])
       end
     end
   end
