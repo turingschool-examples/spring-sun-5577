@@ -15,6 +15,8 @@ RSpec.describe "hospital show page" do
     expect(page).to have_content("Rose Medical")
     expect(page).to_not have_content("Fake Hospital")
 
+    expect(page).to have_content("Total Doctors: 4")
+
     within "#doctors" do
       expect(page).to have_content("Dr. Speth")
       expect(page).to have_content("Dr. Dog")
