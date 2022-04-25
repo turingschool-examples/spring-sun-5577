@@ -4,7 +4,10 @@
   <li>Works at: <%= @doctor.hospital.name %></li>
   <li>Current patients: <br>
     <% @doctor.patients.each do |patient| %>
-      <p> <%= patient.name %> </p>
+      <div id="patients-<%= patient.id %>">
+        <p> <%= patient.name %>
+        <%= link_to "Remove patient", "/doctor_patients/#{@doctor.id}?patient_id=#{patient.id}", method: "delete" %></p>
+      </div>
     <% end %>
   </li>
 </ul>

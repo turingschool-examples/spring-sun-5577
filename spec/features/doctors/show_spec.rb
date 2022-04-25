@@ -32,5 +32,14 @@ RSpec.describe "Doctor show page", type: :feature do
       expect(page).to have_content("Lee K")
       expect(page).to_not have_content("Megan G")
     end
+
+    it "allows me to remove a patient from doctor's workload" do
+      visit "/doctors/#{@doctor1.id}"
+      expect(page).to have_content("Joseph D")
+      within("#patients-#{@patient1.id}") do
+        click_on "Remove patient"
+      end
+      expect(page).to_not have_content("Joseph D")
+    end
   end
 end
