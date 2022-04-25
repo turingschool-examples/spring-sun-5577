@@ -10,5 +10,6 @@ RSpec.describe "Patient index page" do
 
         visit'/patients'
         expect("Rod").to appear_before("Becky")
+        expect("Rod").to appear_before("Rick")
     end
 end
