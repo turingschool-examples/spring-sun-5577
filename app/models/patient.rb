@@ -7,4 +7,8 @@ class Patient < ApplicationRecord
     .where("doctor_id = #{doctor.id}")
     .first
   end
+
+  def self.sort_by_age
+    order("age DESC")
+  end
 end

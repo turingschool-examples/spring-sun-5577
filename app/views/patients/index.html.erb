@@ -1,0 +1,9 @@
+<h1>Patients</h1>
+<ul>
+
+<% @patients.each do |pat| %>
+<li>
+  <%= pat.name %>, <%= pat.age %>
+</li>
+<% end %>
+</ul>
