@@ -45,14 +45,14 @@ RSpec.describe 'doctors show page', type: :feature do
     pd4 = PatientDoctor.create!(doctor: bailey, patient: frank)
 
     visit "/doctors/#{alex.id}"
-    within ".patient-#{kimmy.id}" do
+    within ".patient-#{pd2.id}" do
       click_on "Remove"
       expect(current_path).to eq("/doctors/#{alex.id}")
     end
 
     expect(page).not_to have_content(kimmy.name)
-    expect(Patient.find(kimmy.id).exists?).to be true
-    expect(PatientDoctor(pd2.id).exists?).to be false
+    expect(Patient.exists?(kimmy.id)).to be true
+    expect(PatientDoctor.exists?(pd2.id)).to be false
 
     visit "/doctors/#{bailey.id}"
     expect(page).to  have_content(kimmy.name)
