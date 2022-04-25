@@ -30,6 +30,7 @@ RSpec.describe 'Doctors Show Page' do
       expect(page).to have_content("University: San Fransciso State")
       expect(page).to have_content("Current Hospital: Big Hospital")
       #sad path
+      expect(page).to_not have_content("Other Hospital")
       expect(page).to_not have_content("Sammy Sosa")
       expect(page).to_not have_content("Corking Bats")
       expect(page).to_not have_content("Wrigley College")
@@ -70,7 +71,7 @@ RSpec.describe 'Doctors Show Page' do
       within "#patient-#{pat3.id}" do
         expect(page).to have_content("Ruby")
       end 
-
+      #sad path
       expect(page).to_not have_content("Wubbie")
     end 
 
