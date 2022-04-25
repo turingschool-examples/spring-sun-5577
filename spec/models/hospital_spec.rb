@@ -19,7 +19,7 @@ RSpec.describe Hospital do
       mcdreamy = hospital.doctors.create!(name: "Patrick Dempsy", specialty: "Brains", university: "Oregon State University")
       ploppy= hospital.doctors.create!(name: "Ploppy Gutcutter", specialty: "Gore", university: "Power Butcher University")
       duke = hospital.doctors.create!(name: "Duke Gutcutter", specialty: "Gore", university: "Oregon State University")
-      expect(hospital.universities).to eq(["Stanford University", "Oregon State University", "Power Butcher University"])
+      expect(hospital.universities).to eq(["Oregon State University", "Power Butcher University", "Stanford University"])
     end
   end
 
