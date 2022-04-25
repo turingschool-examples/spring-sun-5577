@@ -1,0 +1,9 @@
+<h3>Hospital Information: <%=@hospital.name%></h3>
+<ul>
+  <li><strong>Name:</strong> <%=@hospital.name%></li>
+  <li><strong>Total Care Providers:</strong> <%=@hospital.doctors.length%></li>
+  <li> <strong>Universities Represented:</strong></li>
+    <p><% @hospital.unique_universities do |name| %>
+    <%= name %>,
+    <% end %></p>
+</ul>

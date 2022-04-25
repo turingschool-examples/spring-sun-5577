@@ -16,11 +16,11 @@ RSpec.describe Hospital do
       doctor_4 = hospital_2.doctors.create!(name: "Guilaine", specialty: "physical therapy", university: "University of Vermont")
 
       actual = hospital_1.unique_universities
-      expect(actual.include?(@doctor_1.university)).to eq(true)
-      expect(actual.include?(@doctor_3.university)).to eq(true)
-      expect(actual.count("University of colorado Fort Collins")).to eq(1)
-      expect(actual.include?(@doctor_4.university)).to eq(false)
-      
+      expect(actual.include?(doctor_1.university)).to eq(true)
+      expect(actual.include?(doctor_3.university)).to eq(true)
+      expect(actual.count("University of Colorado Fort Collins")).to eq(1)
+      expect(actual.include?(doctor_4.university)).to eq(false)
+
     end
 
   end
