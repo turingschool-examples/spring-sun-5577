@@ -15,7 +15,7 @@ RSpec.describe Hospital do
     doc_4 = hospital_1.doctors.create!(name: "Dr. Smith", specialty: "Chiropractic", university: "SCUHS")
     doc_5 = hospital_2.doctors.create!(name: "Dr. Jan Itor", specialty: "Custodial Sciences", university: "Sacred Heart")
 
-    expect(hospital_1.unique_universities).to eq(["SCCO, The Streets, SCUHS"])
+    expect(hospital_1.unique_universities).to eq(["SCCO", "SCUHS", "The Streets"])
     end
   end
 end

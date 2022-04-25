@@ -12,12 +12,15 @@ RSpec.describe "hospital show page" do
 
     visit "/hospitals/#{hospital_1.id}"
 
+    expect(page).to have_content("Rose Medical")
+    expect(page).to_not have_content("Fake Hospital")
+
     within "#doctors" do
-      expect(page).to have_content("Name: Dr. Speth")
-      expect(page).to have_content("Name: Dr. Dog")
-      expect(page).to have_content("Name: Dr. LeGate")
-      expect(page).to have_content("Name: Dr. Smith")
-      expect(page).to_not have_content("Name: Dr. Jan Itor")
+      expect(page).to have_content("Dr. Speth")
+      expect(page).to have_content("Dr. Dog")
+      expect(page).to have_content("Dr. LeGate")
+      expect(page).to have_content("Dr. Smith")
+      expect(page).to_not have_content("Dr. Jan Itor")
     end
 
     within "#universities" do
