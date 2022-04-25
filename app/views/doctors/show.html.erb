@@ -5,9 +5,8 @@
 
 <h3> Patients </h3>
 <% @doctor.patient_doctors.each do |pat_doc| %>
-<div class="patient-<%=pat_doc.id%>">
-  <p> <%= pat_doc.patient.name %>
-  <%= link_to "Remove", "/doctors/#{@doctor.id}/patients/#{pat_doc.id}", method: :delete %></p>
-
-</div>
+    <div class="patient-<%=pat_doc.id%>">
+        <p> <%= pat_doc.patient.name %>
+          <%= link_to "Remove", "/doctors/#{@doctor.id}/patient_doctors/#{pat_doc.id}", method: :delete %></p>
+    </div>
 <% end %>

@@ -1,5 +1,4 @@
 class PatientDoctorsController < ApplicationController
-
   def destroy
     pat_doc = PatientDoctor.find(params[:id])
     pat_doc.destroy

@@ -22,5 +22,4 @@ RSpec.describe Doctor do
       expect(hospital.doctors.unique_universities).to eq(["Stanford University", "Iowa State", "Colombia", "Boston University"])
     end
   end
-
 end
