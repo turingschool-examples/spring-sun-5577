@@ -34,6 +34,7 @@ RSpec.describe 'the doctor show page', type: :feature do
       expect(page).to have_content("Chuck")
       expect(page).to have_content("Monica")
       expect(page).to have_content("Jessica")
+      expect(page).to_not have_content("This doctor has no patients")
     end
   end
 
