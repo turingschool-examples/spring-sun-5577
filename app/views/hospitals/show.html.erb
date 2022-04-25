@@ -3,7 +3,8 @@
   <li><strong>Name:</strong> <%=@hospital.name%></li>
   <li><strong>Total Care Providers:</strong> <%=@hospital.doctors.length%></li>
   <li> <strong>Universities Represented:</strong></li>
-    <p><% @hospital.unique_universities do |name| %>
+    <p><% @hospital.unique_universities.each do |name| %>
     <%= name %>,
+    <!-- I don't understand, I pry into the controller and this should be iterating over an array of university names!? -->
     <% end %></p>
 </ul>
