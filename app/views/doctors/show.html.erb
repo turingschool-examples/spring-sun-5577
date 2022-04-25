@@ -2,3 +2,10 @@
 
 <h3>Specialty: <%= @doctor.specialty %> </h3>
 <h3>University: <%= @doctor.university %> </h3>
+<h3>Works at: <%= @doctor.hospital.name %> </h3>
+<p>Patients:</p>
+<ul>
+  <% @doctor.patients.each do |pat| %>
+  <li id="patient-<%= pat.id %>"><%= pat.name %>, <%= pat.age %></li>
+  <% end %>
+</ul>

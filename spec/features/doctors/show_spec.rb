@@ -3,7 +3,6 @@ require 'rails_helper'
 describe "doctor show page" do
   before do
     @hospital1 = Hospital.create!(name: "Grey Sloan Memorial")
-    @hospital2 = Hospital.create!(name: "Grey Sloan Memorial")
 
     @doc1 = @hospital1.doctors.create!(name:"Meredith Grey", specialty: "General Surgery", university: "Dartmouth")
     @doc2 = @hospital1.doctors.create!(name:"Alex Karev", specialty: "Pediatrics", university: "School U")
@@ -23,5 +22,24 @@ describe "doctor show page" do
     expect(page).to have_content("Meredith Grey")
     expect(page).to have_content("Specialty: General Surgery")
     expect(page).to have_content("University: Dartmouth")
+
+    expect(page).not_to have_content("Alex Karev")
+    expect(page).not_to have_content("Specialty: Pediatrics")
+    expect(page).not_to have_content("University: School U")
+  end
+
+  it 'displays doctors hospital' do
+    expect(page).to have_content("Grey Sloan Memorial")
+  end
+
+  it 'displays doctors patients' do
+    within "#patient-#{@d1_pat1.id}" do
+      expect(page).to have_content("Buddy the Elf, 35")
+    end
+    within "#patient-#{@d1_pat2.id}" do
+      expect(page).to have_content("Cruddy the Shelf, 34")
+    end
+
+    expect(page).not_to have_content("A Child, 3")
   end
 end
