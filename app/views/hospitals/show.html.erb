@@ -3,3 +3,10 @@
 
 Hospital Name: <%= @hospital.name %><br>
 Number of Current Doctors: <%= @hospital.doctors.count %><br>
+
+
+Universities Our Doctors Have Attended: <% @hospital.unique_universities.each do |university| %>
+
+  <%= university %>
+
+<% end %>
