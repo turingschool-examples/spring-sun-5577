@@ -94,5 +94,25 @@ describe 'doctor show page', type: :feature do
         expect(page).to_not have_content(@patient_4.name)
       end
     end
+
+    it 'has a link to remove patient'
+      within "#patient-#{@patient_4.id}" do
+        expect(page).to have_button("Remove #{@patient_4.name}")
+      end
+
+      within "#patient-#{@patient_3.id}" do
+        expect(page).to have_button("Remove #{@patient_3.name}")
+      end
+    end
+
+    it 'removes a patient from a doctor' do
+      click_button "Remove #{@patient_3.name}"
+
+      expect(current_path).to eq(doctor_path(@doctor_3))
+      within "#patients" do
+        expect(page).to have_content(@patient_4.name)
+        expect(page).to_not have_content(@patient_6.name)
+        expect(page).to_not have_content(@patient_3.name)
+      end
+    end
   end
-end

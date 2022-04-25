@@ -63,7 +63,7 @@ describe 'hospital show page', type: :feature do
       within "#universities" do
         expect(page).to have_content(@hospital_1.unique_universities[0])
         expect(page).to have_content(@hospital_1.unique_universities[1])
-save_and_open_page
+
         expect(page).to_not have_content(@hospital_2.unique_universities[0])
         expect(page).to_not have_content(@hospital_2.unique_universities[1])
         expect(page).to_not have_content(@hospital_2.unique_universities[2])
