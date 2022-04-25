@@ -1,0 +1,12 @@
+<section id="hospital_info">
+<%= @hospital.name %>
+
+<%= "Total Number of Doctors: #{@hospital.doc_count}" %>
+</section>
+
+
+<section id="universities">
+  <% @hospital.doctors.each do |doctor| %>
+  <%= doctor.university %>
+  <% end.uniq %>
+</section>

@@ -1,0 +1,10 @@
+<section id="doctor_info">
+<h1> <%= @doctor.name %></h1><br>
+<h2> <%= @doctor.hospital.name %><br>
+  <%= @doctor.specialty %><br></h2>
+</section>
+
+
+<% @doctor.patients.each do |patient| %>
+<%= patient.name %>
+<% end %>[]
