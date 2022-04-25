@@ -5,6 +5,6 @@
   </div>
   <div id="univer-list">
     <h3>Universitys Represented</h3>
-    <%= @hospital.doctors.select(:university).map(&:university).uniq %>
+    <%= @hospital.doctors.select(:university).map(&:university).uniq.join(", ") %>
   </div>
 </div>

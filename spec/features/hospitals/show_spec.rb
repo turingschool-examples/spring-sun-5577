@@ -34,6 +34,15 @@ RSpec.describe "Hospital Show Page" do
     end
   end
 
-  it 'displays a unique list of universitys the doctors attended'
-
+  it 'displays a unique list of universitys the doctors attended' do
+    visit "/hospitals/#{@hospital_1.id}"
+save_and_open_page
+    within("div#univer-list") do
+      expect(page).to have_content("Notre Dame")
+      expect(page).to have_content("Oklahoma University")
+      expect(page).to have_content("University of Florida")
+      expect(page).to have_content("Oklahoma State University")
+      expect(page).to_not have_content("Kansas University")
+    end
+  end
 end
