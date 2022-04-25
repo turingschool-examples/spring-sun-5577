@@ -7,6 +7,6 @@
 <h3>Patients:</h3>
 <ul>
   <% @doc.patients.each do |p| %>
-    <li><%= p.name %></li>
+    <li id=<%= p.id %>><%= p.name %> <%= button_to "Remove Patient From Workload", "/doctor_patients?patient=#{p.id}", method: :delete, local: true %></li>
   <% end %>
 </ul>
