@@ -10,6 +10,9 @@ RSpec.describe "hospitals show page", type: :feature do
     avery = hospital.doctors.create!(name: "Jackson Avery", specialty: "Plastics", university: "Stanford University")
     april = hospital.doctors.create!(name: "April Kepner", specialty: "Trauma", university: "Boston University")
 
+    hospital2 = Hospital.create!(name: "Mercy West")
+    doctor = hospital2.doctors.create!(name: "Unimportant", specialty: "Neuro", university: "Harvard")
+
     visit "/hospitals/#{hospital.id}"
 
     expect(page).to have_content(hospital.name)
@@ -19,5 +22,6 @@ RSpec.describe "hospitals show page", type: :feature do
     expect(page).to have_content("Colombia")
     expect(page).to have_content("Iowa State")
     expect(page).not_to have_content("Cardio")
+    expect(page).not_to have_content("Harvard")
   end
 end
