@@ -54,5 +54,6 @@ RSpec.describe 'doctor show page' do
 	 expect(page).to_not have_content(patient1.name)
 	 expect(page).to have_content(patient2.name)
 	 expect(page).to have_content(patient3.name)	
+	 expect(patient1).to be_a Patient
   end
 end
