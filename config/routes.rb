@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :patients, only: :index
   
   # Could theoretically have a similar route for patient doctors.
-  delete "/doctors/:id/patients/:id/delete", to: "doctors_patients#delete"
+  delete "/doctors/:id/patients/:id/delete", to: "doctors_patients#destroy"
 end
