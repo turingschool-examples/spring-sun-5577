@@ -14,6 +14,9 @@ RSpec.describe Hospital do
     doc_3 = hospital_1.doctors.create!(name: "Dr. LeGate", specialty: "Optometry", university: "SCCO")
     doc_4 = hospital_1.doctors.create!(name: "Dr. Smith", specialty: "Chiropractic", university: "SCUHS")
     doc_5 = hospital_2.doctors.create!(name: "Dr. Jan Itor", specialty: "Custodial Sciences", university: "Sacred Heart")
+    doc_6 = hospital_1.doctors.create!(name: "Dr. London", specialty: "Optometry", university: "SCCO")
+    doc_7 = hospital_1.doctors.create!(name: "Dr. Kuang", specialty: "Chiropractic", university: "SCUHS")
+    doc_8 = hospital_2.doctors.create!(name: "Dr. Kelso", specialty: "Chief of Medicine", university: "Sacred Heart")
 
     expect(hospital_1.unique_universities).to eq(["SCCO", "SCUHS", "The Streets"])
     end
@@ -26,6 +29,7 @@ RSpec.describe Hospital do
     doc_3 = hospital_1.doctors.create!(name: "Dr. LeGate", specialty: "Optometry", university: "SCCO")
     doc_4 = hospital_1.doctors.create!(name: "Dr. Smith", specialty: "Chiropractic", university: "SCUHS")
     doc_5 = hospital_2.doctors.create!(name: "Dr. Jan Itor", specialty: "Custodial Sciences", university: "Sacred Heart")
+    doc_6 = hospital_2.doctors.create!(name: "Dr. Kelso", specialty: "Chief of Medicine", university: "Sacred Heart")
 
     expect(hospital_1.doctor_count).to eq(4)
     end
