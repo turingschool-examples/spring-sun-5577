@@ -1,5 +1,7 @@
-Hospital.destroy_all
+DoctorPatient.destroy_all
+Patient.destroy_all
 Doctor.destroy_all
+Hospital.destroy_all
 
 seattle_grace = Hospital.create!(name: "Seattle Grace Mercy West Hospital")
 grey = Doctor.create!(name: "Meredith Grey", specialty: "General Surgery", university: "Dartmouth", hospital_id: seattle_grace.id)

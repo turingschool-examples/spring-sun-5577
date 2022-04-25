@@ -3,12 +3,14 @@
   <br>
   University: <%= @doctor.university %>
   <br>
-  Hospital: <%= @doctor.hospital %>
+  Hospital: <%= @doctor.hospital.name %>
   <br>
   Patients:
   <br>
+  <div class="patients"<
   <% @doctor.patients.each do |patient| %>
   <ul>
     <%= patient.name %>
   <ul>
   <% end %>
+  </div>
