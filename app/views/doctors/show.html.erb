@@ -3,3 +3,8 @@
 <h2> <%= @doctor.hospital.name %><br>
   <%= @doctor.specialty %><br></h2>
 </section>
+
+
+<% @doctor.patients.each do |patient| %>
+<%= patient.name %>
+<% end %>

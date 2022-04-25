@@ -19,19 +19,18 @@ RSpec.describe "Doctor Show", type: :feature do
 
   it "shows doctor's: name, hospital, and list of patients" do
     within "#doctor_info" do
-      save_and_open_page
       expect(page).to have_content("Doctor1Name")
       expect(page).to have_content("General Surgery")
       expect(page).to have_content("Hospital1Name")
     end
   end
 
-  xit "lists all the patients associated with the doctor" do
-    within "patient_list" do
+  it "lists all the patients associated with the doctor" do
+
       expect(page).to have_content("Patient1Name")
       expect(page).to have_content("Patient2Name")
       expect(page).to have_content("Patient3Name")
       expect(page).to_not have_content("Patient4Name")
-    end
+
   end
 end
