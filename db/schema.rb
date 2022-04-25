@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_25_154614) do
+ActiveRecord::Schema.define(version: 2022_04_25_173005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "doctor_patients", force: :cascade do |t|
+    t.bigint "doctor_id"
+    t.bigint "patient_id"
+    t.index ["doctor_id"], name: "index_doctor_patients_on_doctor_id"
+    t.index ["patient_id"], name: "index_doctor_patients_on_patient_id"
+  end
 
   create_table "doctors", force: :cascade do |t|
     t.string "name"
