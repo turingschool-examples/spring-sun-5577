@@ -50,12 +50,10 @@ RSpec.describe 'the doctor show page' do
         visit "doctors/#{bailey.id}"
         expect(page).to have_content("Drew")
         expect(page).to have_content("Daver")
+        save_and_open_page
+        click_button('Remove from Caseload', :match => :first)
 
-      within"#patient_drew" do
-        click_button 'Create'
-      end
-
-      expect(page).to have_current_path("doctors/#{bailey.id}")
+      expect(page).to have_current_path("/doctors/#{bailey.id}")
       expect(page).to_not have_content("Drew")
       expect(page).to have_content("Daver")
     end

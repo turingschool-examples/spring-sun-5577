@@ -6,4 +6,8 @@ class Doctor < ApplicationRecord
   def hospital_name
     hospital.name
   end
+
+  def active_patients
+    patients.where(status: 0)
+  end
 end
