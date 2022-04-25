@@ -8,7 +8,7 @@
   <div id="patient-list">
     <h3>List of Patients</h3>
       <% @doctor.patients.each do |patient|%>
-        <%= patient.name %><br><%= button_to "Delete #{patient.name}", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete %>
+        <%= patient.name %><%= button_to "Delete #{patient.name}", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete %>
       <% end %>
   </div>
 </div>
