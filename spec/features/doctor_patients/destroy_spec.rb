@@ -1,10 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Hospital do
-  describe "relationships" do
-    it { should have_many(:doctors) }
-  end
-
+RSpec.describe "Doctor Show Page" do
   before :each do
     @hospital = Hospital.create!(name: "Grey Sloan Memorial Hospital")
     @hospital2 = Hospital.create!(name: "Denver Health Hospital")
@@ -28,14 +24,16 @@ RSpec.describe Hospital do
     @docpat5 = DoctorPatient.create!(doctor: @doc2, patient: @patient1)
     @docpat5 = DoctorPatient.create!(doctor: @doc2, patient: @patient5)
   end
+  it "can remove a patient from a doctors caseload" do
+    visit doctor_path(@doc1)
 
-  describe "instance methods" do
-    it "#doctor_count" do
-      expect(@hospital.doctor_count).to eq(4)
+    expect(page).to have_content(@patient1.name)
+
+    within "#doc_pat-#{@docpat1.id}" do
+      click_button "Remove Patient"
     end
 
-    it "#universities" do
-      expect(@hospital.universities).to eq(["Duke University", "Johns Hopkins University", "Stanford University"].sort)
-    end
+    expect(current_path).to eq(doctor_path(@doc1))
+    expect(page).to_not have_content(@patient1.name)
   end
 end

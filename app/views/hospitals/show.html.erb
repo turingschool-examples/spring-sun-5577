@@ -1,0 +1,11 @@
+<h1><%= @hospital.name %></h1>
+
+
+<section id="doc_count">
+  <p> Doctors Affiiated: <%= @hospital.doctor_count %></p>
+</section>
+
+<p> Alumni of the Universities: </p>
+  <% @hospital.universities.each do |u| %>
+    <li><%= u %></li>
+    <% end %>
