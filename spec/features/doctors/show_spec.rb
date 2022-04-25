@@ -108,7 +108,7 @@ RSpec.describe 'Doctors Show Page' do
           expect(page).to_not have_content("Ruby")
           
           expect(page).to have_content("Skeeter")
-          expect(page).to have_content("LugNut")
+          expect(page).to have_content("LugNut")  
         end
       end 
     end 
