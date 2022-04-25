@@ -21,15 +21,13 @@ RSpec.describe 'doctors show page' do
     expect(page).to have_content('Vanderbilt')
     expect(page).to have_content('City Health')
     expect(page).to have_content('Justin Hill')
-    expect(page).to have_content('39')
     expect(page).to have_content('Mark Gainey')
-    expect(page).to have_content('46')
     expect(page).to have_no_content('Ted Leftwich')
     expect(page).to have_no_content('Brian Grimes')
     expect(page).to have_no_content('County Medical')
     expect(page).to have_no_content('Liz Hagler')
     expect(page).to have_no_content('Proctology')
     expect(page).to have_no_content('Sports Medicine')
-    expect(page).to have_no_content('35')    
+    expect(page).to have_no_content('35')
   end
 end
