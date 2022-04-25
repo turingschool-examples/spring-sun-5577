@@ -29,18 +29,6 @@ RSpec.describe 'doctor show page' do
     expect(page).to_not have_content('James')
   end
 
-  # ```
-  # User Story 3, Remove a Patient from a Doctor
-  # ​
-  # As a visitor
-  # When I visit a Doctor's show page
-  # Next to each patient's name, I see a button to remove that patient from that doctor's caseload
-  # When I click that button for one patient
-  # I'm brought back to the Doctor's show page
-  # And I no longer see that patient's name listed
-  #
-  # NOTE: the patient record should not be deleted entirely
-  # ```
   it 'allows the user to remove a patient from a doctor' do
     hospital = Hospital.create!(name: 'UC Denver')
     hospital_2 = Hospital.create!(name: 'SLC')
@@ -56,9 +44,9 @@ RSpec.describe 'doctor show page' do
       click_link 'Remove Patient'
     end
     expect(current_path).to eq("/doctors/#{doctor_1.id}")
-    expect(page).to_not have_content(patient_1.name)
-    expect(patient_1.name).to eq('John')
+    expect(page).to_not have_content('John')
     expect(doctor_1.patients.count).to eq(2)
+    expect(patient_1.name).to eq('John')
 
     within "#patient-#{patient_2.id}" do
       click_link 'Remove Patient'
