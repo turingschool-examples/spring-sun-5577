@@ -12,7 +12,10 @@
 <h1>Patients:</h1>
 <div id="patients">
   <% @doctor.patients.each do |patient| %>
+  <div id="patient-<%= patient.id %>">
     <h2><%= patient.name %></h2>
      <p>Age: <%= patient.age %></p>
+     <%= button_to "Remove #{patient.name}",  %>
+     </div>
   <% end %>
 </div>
