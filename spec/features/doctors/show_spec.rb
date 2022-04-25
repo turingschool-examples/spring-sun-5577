@@ -20,11 +20,17 @@ RSpec.describe "Doctor show page", type: :feature do
   describe "when I visit a doctor's show page" do
     it "displays all the doctors info" do
       visit "/doctors/#{@doctor1.id}"
-
       expect(page).to have_content("Alex Trebek")
       expect(page).to have_content("Florida State")
       expect(page).to have_content("Denver Health")
       expect(page).to_not have_content("Sheldon Cooper")
+    end
+
+    it "displays all the patients for the doctor" do
+      visit "/doctors/#{@doctor1.id}"
+      expect(page).to have_content("Joseph D")
+      expect(page).to have_content("Lee K")
+      expect(page).to_not have_content("Megan G")
     end
   end
 end
