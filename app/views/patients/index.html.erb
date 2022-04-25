@@ -1,0 +1,7 @@
+<h1>Patients</h1>
+
+  <% @patients.order_by_age.each do |patient| %>
+  <ul>
+    <li><%= patient.name %></li>
+  </ul>
+  <% end %>

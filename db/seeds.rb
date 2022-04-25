@@ -11,8 +11,10 @@ grey_2 = Doctor.create!(name: "Other Grey", specialty: "General Surgery", univer
 shepherd = Doctor.create!(name: "Derek Shepherd", specialty: "Neurosurgery", university: "Columbia", hospital_id: seattle_grace.id)
 jd = Doctor.create!(name: "John Dorian", specialty: "Medical", university: "William and Mary", hospital_id: sacred_heart.id)
 
-denny = Patient.create!(name: "Denny Duquette", age: 37)
-lenny = Patient.create!(name: "Lenny Luquette", age: 37)
+jenny = Patient.create!(name: "Jenny Juquette", age: 35)
 
-grey_lenny = DoctorPatient.create!(doctor_id: grey.id, patient_id: lenny.id)
+denny = Patient.create!(name: "Denny Duquette", age: 37)
 grey_denny = DoctorPatient.create!(doctor_id: grey.id, patient_id: denny.id)
+
+lenny = Patient.create!(name: "Lenny Luquette", age: 36)
+grey_lenny = DoctorPatient.create!(doctor_id: grey.id, patient_id: lenny.id)
