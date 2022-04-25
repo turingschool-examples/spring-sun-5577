@@ -11,7 +11,6 @@ RSpec.describe Hospital do
       bailey = hospital.doctors.create!(name: "Miranda Bailey", specialty: "General Surgery", university: "Stanford University")
       bethany = hospital.doctors.create!(name: "Bethany", specialty: "General Surgery", university: "Stanford University")
       frank = hospital.doctors.create!(name: "Frank", specialty: "Nurse", university: "Sydney School")
-       binding.pry
       expect(hospital.schools.count).to eq(2)
     end
   end
