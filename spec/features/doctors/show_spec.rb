@@ -57,7 +57,7 @@ RSpec.describe 'doctors show page' do
         end
       end
 
-      it 'when i click the button for one patient, i am brought back to the same show page and that patient is no longer listed' do
+      it 'when i click the button for one patient, i am brought back to the same doctors show page and that patient is no longer listed' do
         within "#patient-#{@patient_2.id}" do
           click_button("Remove this Patient from Caseload")
         end

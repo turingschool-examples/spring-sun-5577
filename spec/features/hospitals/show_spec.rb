@@ -17,7 +17,7 @@ RSpec.describe 'hospitals show page' do
         visit "/hospitals/#{@hospital_1.id}"
       end
 
-      it 'i see the hospitals name' do
+      it 'i see the hospital name' do
         expect(page).to have_content("Denver Hospital")
         expect(page).not_to have_content("DC Hospital")
       end
@@ -31,7 +31,7 @@ RSpec.describe 'hospitals show page' do
         expect(page).to have_content("NYU").once
         expect(page).to have_content("Johns Hopkins").once
         expect(page).not_to have_content("Harvard")
-        expect(page).not_to have_content("Yale") 
+        expect(page).not_to have_content("Yale")
       end
     end
   end
