@@ -12,5 +12,7 @@ shepherd = Doctor.create!(name: "Derek Shepherd", specialty: "Neurosurgery", uni
 jd = Doctor.create!(name: "John Dorian", specialty: "Medical", university: "William and Mary", hospital_id: sacred_heart.id)
 
 denny = Patient.create!(name: "Denny Duquette", age: 37)
+lenny = Patient.create!(name: "Lenny Luquette", age: 37)
 
+grey_lenny = DoctorPatient.create!(doctor_id: grey.id, patient_id: lenny.id)
 grey_denny = DoctorPatient.create!(doctor_id: grey.id, patient_id: denny.id)
