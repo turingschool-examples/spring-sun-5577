@@ -1,0 +1,13 @@
+<h2>Doctor Info</h2>
+
+<h3><%= @doctor.name %></h3>
+<p><strong>Specialty: <%= @doctor.specialty %></strong></p>
+<p><strong>University: <%= @doctor.university %></strong></p>
+<p><strong>Hospital: <%= @doctor.hospital.name %></strong></p>
+<p><strong>Patients: <% @doctor.patients.each_with_index do |patient, index| %>
+  <% if index != @doctor.patients.count - 1 %>
+    <%= patient.name %>,
+  <% else %>
+    <%= patient.name %>
+  <% end %>
+<% end %></strong></p>
