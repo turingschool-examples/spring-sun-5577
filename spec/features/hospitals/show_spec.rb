@@ -19,10 +19,10 @@ RSpec.describe 'Hospitals Show Page' do
       doc7 = Doctor.create!(name: 'Cheese Man', specialty: "Cheese", university: "Cheese College", hospital_id: hos2.id)
 
       visit "/hospitals/#{hos1.id}"
-      # save_and_open_page
+      
       expect(page).to have_content("Hospital Name: Big Hospital")
       expect(page).to have_content("Number of Current Doctors: 5")
-      
+      #sad path
       expect(page).to_not have_content("Other Hospital")      
     end
 
@@ -40,7 +40,7 @@ RSpec.describe 'Hospitals Show Page' do
       doc7 = Doctor.create!(name: 'Cheese Man', specialty: "Cheese", university: "Cheese College", hospital_id: hos2.id)
 
       visit "/hospitals/#{hos1.id}"
-      # save_and_open_page
+      
       within "#universities" do
         expect(page).to have_content("Houston University")
         expect(page).to have_content("San Fransciso State")
