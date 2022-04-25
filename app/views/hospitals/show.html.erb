@@ -2,3 +2,13 @@
 
 <h3><%= @hospital.name %></h3>
 <p><strong>Number of Doctors: <%= @hospital.doctors.count %></strong></p>
+<div id="universities">
+  <p><strong>These Doctors attended these Universities:
+    <% @hospital.doctors_uniq_universities.each_with_index do |university, index| %>
+      <% if index != @hospital.doctors_uniq_universities.count - 1 %>
+        <%= university %>,
+      <% else %>
+        <%= university %>
+      <% end %>
+  <% end %></strong></p>
+</div>
