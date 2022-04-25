@@ -4,4 +4,8 @@ class Patient < ApplicationRecord
 
   validates :name, presence: true
   validates :age, presence: true
+
+  def self.old_to_young
+    all.order(age: :desc)
+  end
 end
