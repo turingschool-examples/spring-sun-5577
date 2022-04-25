@@ -3,9 +3,9 @@ class Doctor < ApplicationRecord
   has_many :patient_doctors
   has_many :patients, through: :patient_doctors
 
-
-  def patient_list
-    Doctor.select('patients.*').joins(:patient_doctor)
-    # require "pry"; binding.pry
-  end
+  # 
+  # def patient_list
+  #   Doctor.select('patients.*').joins(:patient_doctor)
+  #   # require "pry"; binding.pry
+  # end
 end
