@@ -78,6 +78,10 @@ RSpec.describe 'Doctor Show Page', type: :feature do
       expect(page).to_not have_content(@patient_3.name)
     end
 
+    patients = Patient.all()
+
+    expect(patients).to include(@patient_2)
+
     visit doctor_path(@doctor_2.id)
 
     within "#patients" do
