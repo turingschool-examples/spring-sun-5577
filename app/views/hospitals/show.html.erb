@@ -3,5 +3,5 @@
 <p>Number of Doctors: <%= @hospital.doctors.count %></p>
 <p>Universities of Doctors: </p>
 <% @hospital.doctors.unique_universities.each do |uni| %>
-<p> <%= uni %></p>
+<p> <%= uni  %></p>
 <% end %>
