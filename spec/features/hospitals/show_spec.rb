@@ -41,7 +41,6 @@ RSpec.describe 'Hospitals Show Page' do
 
       visit "/hospitals/#{hos1.id}"
       # save_and_open_page
-      
       within "#universities" do
         expect(page).to have_content("Houston University")
         expect(page).to have_content("San Fransciso State")
@@ -52,6 +51,5 @@ RSpec.describe 'Hospitals Show Page' do
       expect(page).to_not have_content("Cheese College")
       
     end
-
   end 
 end 
