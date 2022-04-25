@@ -30,8 +30,20 @@ RSpec.describe "Doctor Show Page" do
 
     expect(page).to have_content("Current Hospital:")
     expect(page).to have_content("St. Anthonys Hospital")
+    expect(page).to_not have_content("Mercy Hospital")
   end
 
-  it 'displays the names of all patients the doctor has'
+  it 'displays the names of all patients the doctor has' do
+    patient_5 = @doctor_2.patients.create!(name: "Testy Tom", age: 65)
+    patient_6 = @doctor_2.patients.create!(name: "Rspec Richard", age: 23)
 
+    visit "/doctors/#{@doctor_1.id}"
+
+    expect(page).to have_content("Buda Bobby")
+    expect(page).to have_content("Francine Gerry")
+    expect(page).to have_content("Oakley Gunderson")
+    expect(page).to have_content("Adam Hanty")
+    expect(page).to_not have_content("Testy Tom")
+    expect(page).to_not have_content("Rspec Richard")
+  end
 end
