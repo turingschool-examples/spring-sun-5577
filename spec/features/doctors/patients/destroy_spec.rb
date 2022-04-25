@@ -29,4 +29,4 @@ RSpec.describe 'the doctor show page removing a patient' do
       expect(page).to_not have_content("Alex")
     end
   end
-end 
+end
