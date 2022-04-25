@@ -1,15 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'doctor show page' do
-  # User Story 1, Doctors Show Page
-  # As a visitor
-  # When I visit a doctor's show page
-  # I see all of that doctor's information including:
-  #  - name
-  #  - specialty
-  #  - university where they got their doctorate
-  # And I see the name of the hospital where this doctor works
-  # And I see the names of all of the patients this doctor has
+
   it 'displays all of the doctor information' do
     hospital = Hospital.create!(name: 'UC Denver')
     hospital_2 = Hospital.create!(name: 'SLC')
@@ -19,7 +11,7 @@ RSpec.describe 'doctor show page' do
     patient_2 = doctor_1.patients.create!(name: 'Mary', age: 25)
     patient_3 = doctor_1.patients.create!(name: 'Dave', age: 60)
     patient_4 = doctor_2.patients.create!(name: 'Dave', age: 60)
-    
+
     visit "doctors/#{doctor_1.id}"
 
     expect(page).to have_content('Chris')
