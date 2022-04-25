@@ -7,7 +7,7 @@ class DoctorsController < ApplicationController
   def destroy
     @doctor = Doctor.find(params[:id])
     @doctor.doctor_patients.destroy(params[:patient_id])
- 
+    
     redirect_to "/doctors/#{@doctor.id}"
   end
   
