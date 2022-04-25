@@ -28,7 +28,7 @@ RSpec.describe 'A hospital show page' do
   it 'has a unique list of universities its doctors attended' do
     anthonys = Hospital.create!(name: "St. Anthony's")
     anthony = anthonys.doctors.create!(name: 'St. Anthony', specialty: 'Doctoring', university: 'The Doctoring University')
-    hank = d_health.doctors.create!(name: 'Hank', specialty: 'Pediatric Care', university: 'The Doctoring University')
+    hank = anthonys.doctors.create!(name: 'Hank', specialty: 'Pediatric Care', university: 'The Doctoring University')
     tony = anthonys.doctors.create!(name: 'Regular Tony', specialty: 'Foot Surgeon', university: 'HowtoCutAFoot.com')
 
     d_health = Hospital.create!(name: "Denver Health")
