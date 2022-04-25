@@ -6,7 +6,7 @@
 <p><strong>Hospital: <%= @doctor.hospital.name %></strong></p>
 <p><strong>Patients: <% @doctor.patients.each_with_index do |patient, index| %>
   <% if index != @doctor.patients.count - 1 %>
-    <%= patient.name %>,
+    <%= patient.name button_to "Delete #{patient.name}", doctor_patient_path %>,
   <% else %>
     <%= patient.name %>
   <% end %>
