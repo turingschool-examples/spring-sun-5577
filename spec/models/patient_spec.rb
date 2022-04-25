@@ -14,7 +14,7 @@ RSpec.describe Patient do
       patient_3 = Patient.create(name: "Sting", age: 65)
       patient_4 = Patient.create(name: "Kidd Bandit", age: 25)
 
-      patients = Patient.sort_by_age
+      patients = Patient.sort_all_by_age
 
       within patients do
         expect(patient_3).to appear_before(patient_1)
