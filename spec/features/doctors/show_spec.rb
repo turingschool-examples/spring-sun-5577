@@ -17,7 +17,7 @@ RSpec.describe "Doctor Show Page" do
     DoctorPatient.create!(doctor: doctor2, patient: patient3)
 
     visit doctor_path(doctor1.id)
-    save_and_open_page
+
     expect(page).to have_content("Miranda Bailey")
     expect(page).to have_content("General Surgery")
     expect(page).to have_content("Stanford University")
