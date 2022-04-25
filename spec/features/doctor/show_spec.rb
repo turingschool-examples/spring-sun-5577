@@ -31,10 +31,12 @@ RSpec.describe "Doctor show page" do
         PatientDoctor.create!(patient_id: patient1.id, doctor_id: bailey.id)
         PatientDoctor.create!(patient_id: patient2.id, doctor_id: bailey.id)
         PatientDoctor.create!(patient_id: patient3.id, doctor_id: bailey.id)
-        binding.pry
         visit "/doctors/#{bailey.id}"
         within("#patients") do 
             expect(page).to have_content("Becky")
+            expect(page).to have_content("Bruce")
+            expect(page).to have_content("Rod")
+            expect(page).to_not have_content("Rick")
         end
 
     end
