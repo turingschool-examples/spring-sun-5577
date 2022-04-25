@@ -1,0 +1,13 @@
+<div id="doctor-info">
+  <h1><%= @doctor.name %></h1>
+  <h2><%= @doctor.specialty %></h2>
+  <h2><%= @doctor.university %></h2>
+  <h2><%= @doctor.hospital.name %></h2>
+</div>
+
+<div id="patients">
+  <h1>Patients</h1>
+  <% @doctor.patients.each do |patient| %>
+    <h2><%= patient.name %>, age: <%= patient.age.to_s %></h2>
+  <% end %>
+</div>
