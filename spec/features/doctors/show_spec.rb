@@ -41,9 +41,11 @@ RSpec.describe 'A doctors show page' do
 
     visit "/doctors/#{anthony.id}"
 
-    expect(page).to have_content('Billy Jonson')
-    expect(page).to have_content('Shane Jonson')
+    within '#patients' do
+      expect(page).to have_content('Billy Jonson')
+      expect(page).to have_content('Shane Jonson')
 
-    expect(page).to_not have_content('Harold Hurtsfoot')
+      expect(page).to_not have_content('Harold Hurtsfoot')
+    end
   end
 end

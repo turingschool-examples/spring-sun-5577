@@ -1,0 +1,9 @@
+<h1><%= @hospital.name %></h1>
+
+<p><strong>Number of doctors:</strong> <%= @hospital.number_of_doctors %></p>
+
+<div id="universities">
+  <% @hospital.unique_university_names.each do |name| %>
+    <p><%= name %></p>
+  <% end %>
+</div>

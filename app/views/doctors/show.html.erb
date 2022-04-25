@@ -5,6 +5,8 @@
 <p><strong>University:</strong> <%= @doctor.university %></p>
 
 <h3>Patients:</h3>
-<% @doctor.patients.each do |patient| %>
-  <p><%= patient.name %><p>
-<% end %>
+<div id='patients'
+  <% @doctor.patients.each do |patient| %>
+    <p><%= patient.name %><p>
+  <% end %>
+</div>
