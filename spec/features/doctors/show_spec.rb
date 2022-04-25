@@ -14,7 +14,7 @@ RSpec.describe 'Doctor show' do
     doctorpatient3 = DoctorPatient.create!(doctor: doctor2, patient: patient3)
     visit "/doctors/#{doctor.id}/"
       within("#doctor-info") do
-
+        #save_and_open_page
         expect(page).to have_content(doctor.name)
         expect(page).to have_content(doctor.specialty)
         expect(page).to have_content(doctor.university)
@@ -25,6 +25,15 @@ RSpec.describe 'Doctor show' do
         expect(page).to have_content(patient1.name)
         expect(page).to have_content(patient2.name)
         expect(page).to_not have_content(patient3.name)
+      end
+
+      within("#doctor-patients") do
+        expect(page).to have_content(patient1.name)
+        expect(page).to have_button("Remove #{patient1.name}")
+        click_button "Remove #{patient1.name}"
+
+
+        expect(page).to_not have_content(patient1.name)
       end
 
   end
