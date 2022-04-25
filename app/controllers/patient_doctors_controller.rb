@@ -1,10 +1,11 @@
 class PatientDoctorsController < ApplicationController
 
   def delete
-    DoctorPatient
+    record = PatientDoctor
     .where(doctor_id: params[:doctor_id])
     .where(patient_id: params[:patient_id])
-    .destroy
+    PatientDoctor.destroy(record.first.id)
+    redirect_to "/doctors/#{params[:doctor_id]}/"
   end
 
 end
