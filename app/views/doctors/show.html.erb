@@ -3,8 +3,9 @@
 <h3> University: <%= @doctor.university %> </h3>
 <h3> Hospital: <%= @doctor.hospital.name %> </h3>
 
-<div id="patients">
+<section id="patients">
   <% @doctor.patients.each do |patient| %>
-    <%= patient.name %>
+      <%= patient.name %>
+      <%= button_to "Remove #{patient.name}", "/doctor_patients", method: :delete, params: {patient_id: patient.id, doctor_id: @doctor.id} %>
   <% end %>
-</div>
+</section>
