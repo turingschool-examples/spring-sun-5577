@@ -7,6 +7,7 @@ RSpec.describe "Hospitals Show Page" do
 
     @doc_1 = @cuddle_town.doctors.create!(name: "Dr. Oopsies", specialty: "Messing Up", university: "Cute College")
     @doc_2 = @cuddle_town.doctors.create!(name: "Dr. Nono", specialty: "Fumbling Delicate Tools", university: "UPENN")
+    @doc_3 = @cuddle_town.doctors.create!(name: "Dr. Yucky", specialty: "Never Washes Hands", university: "UPENN")
 
     @johnny = Patient.create!(name: "Johnny Bowman", age: 99)
     @mike = Patient.create!(name: "Mike Dao", age: 29)
@@ -22,5 +23,22 @@ RSpec.describe "Hospitals Show Page" do
 
     expect(page).to have_content(@cuddle_town.name)
     expect(page).to_not have_content(@broken_bones.name)
+  end
+
+  it "displays number of doctors that work there" do
+    visit "/hospitals/#{@cuddle_town.id}"
+
+    within("#NumDocs") do
+      expect(page).to have_content("Number of Doctors at This Hospital: 3")
+    end
+  end
+
+  it "displays unique lists of universities that this hospital's doctors attended" do
+    visit "/hospitals/#{@cuddle_town.id}"
+  
+    within("#UniqUniversities") do
+      expect(page).to have_content("Cute College", count: 1)
+      expect(page).to have_content("UPENN", count: 1)
+    end
   end
 end

@@ -1,1 +1,14 @@
 <h1><%= @hospital.name %></h1>
+
+<div id="NumDocs">
+  <h2>Number of Doctors at This Hospital: <%= @hospital.doctors.distinct.count %></h2>
+</div>
+
+<div id="UniqUniversities">
+  <h2>Universities Our Doctors Have Attended:</h2>
+  <ul>
+    <% @hospital.doctors.pluck(:university).uniq.each do |u| %>
+    <li><%= u %></li>
+    <% end %>
+  </ul>
+</div>
