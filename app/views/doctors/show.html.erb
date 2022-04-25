@@ -3,4 +3,12 @@
   <li><strong>Name:</strong> <%=@doctor.name%></li>
   <li><strong>Specialty:</strong> <%=@doctor.specialty%></li>
   <li><strong>Alma Mater:</strong> <%=@doctor.university%></li>
+  <li><strong>Host Hospital:</strong> <%=@doctor.hospital.name%></li>
+</ul>
+
+<h3>Patients Under <%=@doctor.name%>'s care</h3>
+<ul>
+  <% @doctor.patients.each do |patient| %>
+  <li><%= patient.name %></li>
+  <% end %>
 </ul>
