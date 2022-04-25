@@ -24,12 +24,12 @@ RSpec.describe 'Doctors Show Page' do
       docpat4 = DoctorPatient.create!(doctor_id: doc2.id, patient_id: pat4.id)
       
       visit "/doctors/#{doc1.id}"
-      # save_and_open_page
+    
       expect(page).to have_content("Name: Barry Bonds")
       expect(page).to have_content("Specialty: Steroids")
       expect(page).to have_content("University: San Fransciso State")
       expect(page).to have_content("Current Hospital: Big Hospital")
-      
+      #sad path
       expect(page).to_not have_content("Sammy Sosa")
       expect(page).to_not have_content("Corking Bats")
       expect(page).to_not have_content("Wrigley College")
@@ -56,18 +56,21 @@ RSpec.describe 'Doctors Show Page' do
       docpat4 = DoctorPatient.create!(doctor_id: doc2.id, patient_id: pat4.id)
       
       visit "/doctors/#{doc1.id}"
-      # save_and_open_page
+
       expect(page).to have_content("Current Patients: ")
 
       within "#patient-#{pat1.id}" do
         expect(page).to have_content("Skeeter")
-      end 
+      end
+
       within "#patient-#{pat2.id}" do
         expect(page).to have_content("LugNut")
       end 
+
       within "#patient-#{pat3.id}" do
         expect(page).to have_content("Ruby")
       end 
+
       expect(page).to_not have_content("Wubbie")
     end 
 
@@ -91,20 +94,21 @@ RSpec.describe 'Doctors Show Page' do
         within "#patient-#{pat1.id}" do
           expect(page).to have_button("Remove This Patient")
         end 
+
         within "#patient-#{pat2.id}" do
           expect(page).to have_button("Remove This Patient")
         end 
+
         within "#patient-#{pat3.id}" do
           click_button "Remove This Patient"
         end 
         expect(current_path).to eq("/doctors/#{doc1.id}")
-        # save_and_open_page
+        
         within "#all_patients" do
           expect(page).to_not have_content("Ruby")
           
           expect(page).to have_content("Skeeter")
           expect(page).to have_content("LugNut")
-          # binding.pry
         end
       end 
     end 
