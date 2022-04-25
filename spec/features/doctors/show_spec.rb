@@ -41,12 +41,10 @@ RSpec.describe 'A doctors show page' do
 
     visit "/doctors/#{anthony.id}"
 
-    within '#patients' do
-      expect(page).to have_content('Billy Jonson')
-      expect(page).to have_content('Shane Jonson')
+    expect(page).to have_content('Billy Jonson')
+    expect(page).to have_content('Shane Jonson')
 
-      expect(page).to_not have_content('Harold Hurtsfoot')
-    end
+    expect(page).to_not have_content('Harold Hurtsfoot')
   end
 
   context 'patient removal' do
@@ -65,7 +63,7 @@ RSpec.describe 'A doctors show page' do
       within "#patient-#{billy.id}" do
         click_link 'Remove Billy Jonson'
       end
-      expect(current_path).to eq("/doctors/#{anthonys.id}")
+      expect(current_path).to eq("/doctors/#{anthony.id}")
 
       expect(page).to_not have_content('Billy Jonson')
       expect(page).to have_content('Shane Jonson')
@@ -73,7 +71,7 @@ RSpec.describe 'A doctors show page' do
       within "#patient-#{shane.id}" do
         click_link 'Remove Shane Jonson'
       end
-      expect(current_path).to eq("/doctors/#{anthonys.id}")
+      expect(current_path).to eq("/doctors/#{anthony.id}")
 
       expect(page).to_not have_content('Billy Jonson')
       expect(page).to_not have_content('Shane Jonson')
