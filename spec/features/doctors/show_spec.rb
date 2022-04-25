@@ -39,8 +39,8 @@ RSpec.describe 'doctors show page' do
         expect(page).to have_content("Junior Soprano")
         expect(page).to have_content("Janice Soprano")
         expect(page).to have_content("Lyvia Soprano")
-        expect(page).to have_content("Mikey Palmice")
-        expect(page).to have_content("Ralphie Cifaretto")
+        expect(page).not_to have_content("Mikey Palmice")
+        expect(page).not_to have_content("Ralphie Cifaretto")
       end
     end
   end
