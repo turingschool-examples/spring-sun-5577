@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 2022_04_25_154614) do
     t.bigint "hospital_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "patients_id"
+    t.bigint "patient_id"
     t.index ["hospital_id"], name: "index_doctors_on_hospital_id"
-    t.index ["patients_id"], name: "index_doctors_on_patients_id"
+    t.index ["patient_id"], name: "index_doctors_on_patient_id"
   end
 
   create_table "hospitals", force: :cascade do |t|
@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 2022_04_25_154614) do
   create_table "patients", force: :cascade do |t|
     t.string "name"
     t.integer "age"
-    t.bigint "doctors_id"
+    t.bigint "doctor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["doctors_id"], name: "index_patients_on_doctors_id"
+    t.index ["doctor_id"], name: "index_patients_on_doctor_id"
   end
 
   add_foreign_key "doctors", "hospitals"
-  add_foreign_key "doctors", "patients", column: "patients_id"
-  add_foreign_key "patients", "doctors", column: "doctors_id"
+  add_foreign_key "doctors", "patients"
+  add_foreign_key "patients", "doctors"
 end

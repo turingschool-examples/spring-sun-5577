@@ -4,6 +4,8 @@ RSpec.describe 'Doctors Show Page', type: :feature do
     @hospital = Hospital.create!(name: "Grey Sloan Memorial Hospital")
     @hospital1 = Hospital.create!(name: "Not my Hospital")
     @doc = @hospital.doctors.create!(name: "Miranda Bailey", specialty: "General Surgery", university: "Stanford University")
+    @denny = bailey.patients.create!(name: "Denny Duquette", age: 39)
+    @john = bailey.patients.create!(name: "John", age: 49)
   end
 
   it 'Shows an individual doctor and all related attributes' do
