@@ -6,4 +6,8 @@
 
 <h2> Hospital: <%= @doc.hospital.name %> </h2>
 
+<h2>Patients</h2>
+<% @doc.patients.each do |patient| %>
+<p> <%= link_to("#{patient.name}", patient_path(patient)) %> </p>
+<% end %>
 </div>
