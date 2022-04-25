@@ -1,0 +1,10 @@
+<div class="feature-box">
+  <h1> <%= @hospital.name %> Show Page </h1><br>
+  <div id="total-docs">
+    <h3>Current Doctors Total: <%= @hospital.doctors.count %></h3><br>
+  </div>
+  <div id="univer-list">
+    <h3>Universitys Represented</h3>
+    <%= @hospital.doctors.select(:university).map(&:university).uniq %>
+  </div>
+</div>
