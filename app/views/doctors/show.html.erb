@@ -6,6 +6,9 @@
 <p>Patients:</p>
 <ul>
   <% @doctor.patients.each do |pat| %>
-  <li id="patient-<%= pat.id %>"><%= pat.name %>, <%= pat.age %></li>
+  <li id="patient-<%= pat.id %>">
+    <%= pat.name %>, <%= pat.age %>
+    <%=button_to "Remove", "/doctor_patients/#{pat.this_doctor_patient(@doctor).id}", method: :delete %>
+  </li>
   <% end %>
 </ul>

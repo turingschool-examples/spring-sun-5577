@@ -14,6 +14,7 @@ describe "doctor show page" do
 
     @d2_pat1 = Patient.create!(name: "A Child", age: 3)
     DoctorPatient.create!(doctor_id: @doc2.id, patient_id: @d2_pat1.id)
+    DoctorPatient.create!(doctor_id: @doc2.id, patient_id: @d1_pat2.id)
 
     visit "/doctors/#{@doc1.id}"
   end
@@ -41,5 +42,18 @@ describe "doctor show page" do
     end
 
     expect(page).not_to have_content("A Child, 3")
+  end
+
+  it 'has a button to remove a patient from the doctors caseload' do
+    within "#patient-#{@d1_pat2.id}" do
+      expect(page).to have_content("Cruddy the Shelf, 34")
+      click_button("Remove")
+    end
+
+    expect(current_path).to eq("/doctors/#{@doc1.id}")
+    expect(page).not_to have_content("Cruddy the Shelf, 34")
+
+    visit("/doctors/#{@doc2.id}")
+    expect(page).to have_content("Cruddy the Shelf, 34")
   end
 end
