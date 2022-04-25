@@ -97,8 +97,6 @@ describe 'doctor show page', type: :feature do
 
     it 'has a link to remove patient' do
       within "#patient-#{@doctor_patient_2.id}" do
-        save_and_open_page
-
         expect(page).to have_button("Remove #{@patient_4.name}")
       end
 
