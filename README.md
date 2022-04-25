@@ -50,12 +50,12 @@ Some of the initial migrations and model set up has been done for you.
   * Ex: name: "Grey Sloan Memorial Hospital"
 * Doctors have a name, specialty, and university that they attended
   * Ex: name: "Miranda Bailey", specialty: "General Surgery", university: "Stanford University"
-* Patients have a name and an age
+* Patients have a name and an age x
   * Ex: name: "Denny Duquette", age: 39
 * Hospitals have many Doctors
 * Doctors belong to a Hospital
-* Doctors can have many patients
-* Patients can have many doctors
+* Doctors can have many patients x
+* Patients can have many doctors x
 
 ## User Stories
 
