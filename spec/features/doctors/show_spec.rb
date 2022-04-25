@@ -87,23 +87,24 @@ RSpec.describe 'Doctors Show Page' do
         docpat2 = DoctorPatient.create!(doctor_id: doc1.id, patient_id: pat2.id)
         docpat3 = DoctorPatient.create!(doctor_id: doc1.id, patient_id: pat3.id)
         visit "/doctors/#{doc1.id}"
-        
+        # save_and_open_page
         within "#patient-#{pat1.id}" do
-          expect(page).to have_content("Remove This Patient")
+          expect(page).to have_button("Remove This Patient")
         end 
         within "#patient-#{pat2.id}" do
-          expect(page).to have_content("Remove This Patient")
+          expect(page).to have_button("Remove This Patient")
         end 
         within "#patient-#{pat3.id}" do
           click_button "Remove This Patient"
         end 
         expect(current_path).to eq("/doctors/#{doc1.id}")
-
-        within "all_patients" do
+        # save_and_open_page
+        within "#all_patients" do
           expect(page).to_not have_content("Ruby")
           
           expect(page).to have_content("Skeeter")
           expect(page).to have_content("LugNut")
+          # binding.pry
         end
       end 
     end 
