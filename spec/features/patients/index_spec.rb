@@ -23,6 +23,6 @@ describe "doctor show page" do
   it 'displays patients in order from oldest to youngest' do
     expect("Not So Much A Child").to appear_before("Buddy the Elf")
     expect("Buddy the Elf").to appear_before("Cruddy the Shelf")
-    expect("Cruddy the Shelf").to appear_before("A Child")
+    expect("Cruddy the Shelf, 34").to appear_before("A Child, 3")
   end
 end
