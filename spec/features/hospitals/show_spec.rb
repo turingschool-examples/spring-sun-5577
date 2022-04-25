@@ -12,11 +12,14 @@ RSpec.describe "hospital show page" do
 
     visit "/hospitals/#{hospital_1.id}"
 
+    #should have info for hospital_1 and NOT for hospital_2
     expect(page).to have_content("Rose Medical")
     expect(page).to_not have_content("Fake Hospital")
 
+    #should have number of doctors for ONLY hospital_1
     expect(page).to have_content("Total Doctors: 4")
 
+    #this wasn't part of the user story, I misread it intitially, just didn't delete it because it works
     within "#doctors" do
       expect(page).to have_content("Dr. Speth")
       expect(page).to have_content("Dr. Dog")
@@ -25,6 +28,7 @@ RSpec.describe "hospital show page" do
       expect(page).to_not have_content("Dr. Jan Itor")
     end
 
+    #should have universities for docs at hospital_1 and NOT at hospital_2
     within "#universities" do
       expect(page).to have_content("SCCO")
       expect(page).to have_content("The Streets")

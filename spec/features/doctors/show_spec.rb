@@ -13,18 +13,24 @@ RSpec.describe "doctor show page" do
 
     visit "/hospitals/#{hospital_1.id}/doctors/#{doc_1.id}"
 
+    #should have info for doctor_1 and hospital_1
     expect(page).to have_content("Name: Dr. Speth")
     expect(page).to have_content("Specialty: Optometry")
     expect(page).to have_content("University: SCCO")
     expect(page).to have_content("Hospital: Rose Medical")
+    
+    #should NOT have info for doctor_2 and hospital_2
     expect(page).to_not have_content("Hospital: Fake Hospital")
     expect(page).to_not have_content("Name: Dr. Dog")
     expect(page).to_not have_content("Specialty: Music")
     expect(page).to_not have_content("University: The Streets")
 
     within "#patients" do
+      #should have patients for doctor_1
       expect(page).to have_content("Retina Patient")
       expect(page).to have_content("Glaucoma Patient")
+      
+      #should NOT have patients for doctor_2
       expect(page).to_not have_content("Bass Player")
       expect(page).to_not have_content("Guitar Player")
     end
@@ -43,16 +49,16 @@ RSpec.describe "doctor show page" do
     visit "/hospitals/#{hospital_1.id}/doctors/#{doc_1.id}"
 
     within "#patients" do
+      #both patients on caseload
       expect(page).to have_content("Retina Patient")
       expect(page).to have_content("Glaucoma Patient")
+      click_button "Remove Retina Patient"
     end
     
-    click_button "Remove Retina Patient"
-
     expect(current_path).to eq("/hospitals/#{hospital_1.id}/doctors/#{doc_1.id}")
     
-    #check that patient is removed from caseload
     within "#patients" do
+      #check that patient is removed from caseload and other patient not affected
       expect(page).to_not have_content("Retina Patient")
       expect(page).to have_content("Glaucoma Patient")
     end
