@@ -1,0 +1,12 @@
+<div class="feature-box">
+  <h1>Doctor <%= @doctor.name %> Show Page</h1>
+  <ul>
+    <p>Specialty: <%= @doctor.specialty %></p>
+    <p>University Attended: <%= @doctor.university %> </p>
+    <p>Current Hospital: <%= @doctor.hospital.name %></p><br>
+    <h3>List of Patients</h3> <% @doctor.patients.each do |patient|%>
+                        <p> <%= patient.name %></p>
+                        <% end %>
+  </ul>
+
+</div>
