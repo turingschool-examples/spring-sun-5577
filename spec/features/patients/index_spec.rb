@@ -13,6 +13,8 @@ RSpec.describe 'Patients Index Page' do
       
       visit "/patients"
 
+      expect(page).to have_content("All Patients (Oldest to Youngest)")
+      
       expect("Wubbie").to appear_before("Ruby")
       expect("Ruby").to appear_before("LugNut")
 

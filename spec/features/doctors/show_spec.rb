@@ -103,7 +103,7 @@ RSpec.describe 'Doctors Show Page' do
           click_button "Remove This Patient"
         end 
         expect(current_path).to eq("/doctors/#{doc1.id}")
-        
+        # save_and_open_page
         within "#all_patients" do
           expect(page).to_not have_content("Ruby")
           

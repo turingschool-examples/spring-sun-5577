@@ -1,8 +1,8 @@
 <h1>Patients Index Page</h1>
 
 
-All Patients: <% @patients.oldest_youngest.each do |patient| %>
+All Patients (Oldest to Youngest): <br><% @patients.oldest_to_youngest.each do |patient| %>
 
-  <%= patient.name %>
+  <%= patient.name %><br>
 
 <% end %>

@@ -6,12 +6,12 @@ University: <%= @doctor.university %><br>
 Current Hospital: <%= @doctor.hospital.name %><br><br>
 
 <section id="all_patients">
-Current Patients: <% @doctor.patients.each do |patient| %>
-<section id="patient-<%= patient.id%>">
+Current Patients: <% @doctor.doctor_patients.each do |doc_patient| %>
+<section id="patient-<%= doc_patient.patient.id%>">
 
-  <%= patient.name %><br>
+  <%= doc_patient.patient.name %><br>
 
-  <%= button_to "Remove This Patient", "/doctors/#{@doctor.id}", method: :delete, params: {patient_id: "#{patient.id}"} %>
+  <%= button_to "Remove This Patient", "/doctors/#{@doctor.id}", method: :delete, params: {doc_patient_id: "#{doc_patient.id}"} %>
 
 </section>
 
