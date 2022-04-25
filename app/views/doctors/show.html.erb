@@ -1,0 +1,16 @@
+<h3>Doctor Information: <%=@doctor.name%></h3>
+<ul>
+  <li><strong>Name:</strong> <%=@doctor.name%></li>
+  <li><strong>Specialty:</strong> <%=@doctor.specialty%></li>
+  <li><strong>Alma Mater:</strong> <%=@doctor.university%></li>
+  <li><strong>Host Hospital:</strong> <%=@doctor.hospital.name%></li>
+</ul>
+
+<h3>Patients Under <%=@doctor.name%>'s care</h3>
+<ul>
+  <% @doctor.patients.each do |patient| %>
+  <div id="doctors-patients-<%= patient.id %>">
+    <li><%= patient.name %><%= button_to "Remove Patient", "/doctors/#{@doctor.id}/patients/#{patient.id}/", method: :delete%></li>
+  </div>
+  <% end %>
+</ul>
