@@ -50,6 +50,7 @@ RSpec.describe 'doctor show page' do
 
 	  expect(current_path).to eq doctor_path(christina.id)
 	end
+
 	 expect(page).to_not have_content(patient1.name)
 	 expect(page).to have_content(patient2.name)
 	 expect(page).to have_content(patient3.name)	
