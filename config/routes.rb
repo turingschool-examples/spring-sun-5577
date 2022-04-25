@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   get "/hospitals/:id", to: "hospitals#show"
 
   delete "/doctor_patients", to: "doctor_patients#delete"
+
+  get "/patients", to: "patients#index"
+
 end
