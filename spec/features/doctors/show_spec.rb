@@ -48,4 +48,48 @@ RSpec.describe 'A doctors show page' do
       expect(page).to_not have_content('Harold Hurtsfoot')
     end
   end
+
+  context 'patient removal' do
+    it 'shows a remove patient button next to each patient' do
+      anthonys = Hospital.create!(name: "St. Anthony's")
+
+      anthony = anthonys.doctors.create!(name: 'St. Anthony', specialty: 'Doctoring', university: 'The Doctoring University')
+      billy = anthony.patients.create!(name: 'Billy Jonson', age: 25)
+      shane = anthony.patients.create!(name: 'Shane Jonson', age: 2)
+
+      visit "/doctors/#{anthony.id}"
+
+      expect(page).to have_content('Billy Jonson')
+      expect(page).to have_content('Shane Jonson')
+
+      within "#patient-#{billy.id}" do
+        click_link 'Remove Billy Jonson'
+      end
+      expect(current_path).to eq("/doctors/#{anthonys.id}")
+
+      expect(page).to_not have_content('Billy Jonson')
+      expect(page).to have_content('Shane Jonson')
+
+      within "#patient-#{shane.id}" do
+        click_link 'Remove Shane Jonson'
+      end
+      expect(current_path).to eq("/doctors/#{anthonys.id}")
+
+      expect(page).to_not have_content('Billy Jonson')
+      expect(page).to_not have_content('Shane Jonson')
+    end
+
+    it 'removing a patient does not remove its record from the database' do
+      anthonys = Hospital.create!(name: "St. Anthony's")
+
+      anthony = anthonys.doctors.create!(name: 'St. Anthony', specialty: 'Doctoring', university: 'The Doctoring University')
+      billy = anthony.patients.create!(name: 'Billy Jonson', age: 25)
+      shane = anthony.patients.create!(name: 'Shane Jonson', age: 2)
+
+      visit "/doctors/#{anthony.id}"
+      click_link 'Remove Shane Jonson'
+
+      expect(Patient.find(shane.id)).to eq(shane)
+    end
+  end
 end
