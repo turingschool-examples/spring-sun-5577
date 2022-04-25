@@ -9,7 +9,7 @@ RSpec.describe 'A doctors show page' do
 
     visit "/doctors/#{anthony.id}/"
 
-    expect(page).to have_content("Works at: St Anthony's")
+    expect(page).to have_content("Works at: St. Anthony's")
     expect(page).to_not have_content("Works at: Denver Health")
   end
 
