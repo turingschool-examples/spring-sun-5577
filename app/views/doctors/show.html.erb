@@ -7,5 +7,8 @@
 <br>
 <p>Patients:</p>
 <% @doctor.patients.each do |patient| %>
-<p><%= patient.name %></p>
+<div id="patient-<%= patient.id %>">
+  <p><%= patient.name %></p>
+  <%= link_to 'Remove Patient', method:  %>
+</div>
 <% end %>
