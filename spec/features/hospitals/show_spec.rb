@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Doctor show page" do
+RSpec.describe "Hospital show page" do
   before :each do
     @hospital = Hospital.create!(name: "Grey Sloan Memorial Hospital")
     @hospital2 = Hospital.create!(name: "Denver Health Hospital")
@@ -8,6 +8,8 @@ RSpec.describe "Doctor show page" do
     @doc1 = @hospital.doctors.create!(name: "Miranda Bailey", specialty: "General Surgery", university: "Stanford University")
     @doc2 = @hospital.doctors.create!(name: "Louise Tetric", specialty: "Pediatric Surgery", university: "Johns Hopkins University")
     @doc3 = @hospital.doctors.create!(name: "John Dietz", specialty: "Orthopedic Surgery", university: "Duke University")
+    @doc4 = @hospital.doctors.create!(name: "Sami Patel", specialty: "Cardiologist", university: "Duke University")
+    @doc5 = @hospital2.doctors.create!(name: "Dana Scully", specialty: "Forensic Pathologist", university: "Georgetown University")
 
     @patient1 = Patient.create!(name: "Denny Duquette", age: 39)
     @patient2 = Patient.create!(name: "William Watt", age: 35)
@@ -23,29 +25,27 @@ RSpec.describe "Doctor show page" do
     @docpat5 = DoctorPatient.create!(doctor: @doc2, patient: @patient5)
   end
 
-  it "shows all of a doctors information" do
-    visit doctor_path(@doc1)
-
-    expect(page).to have_content(@doc1.name)
-    expect(page).to have_content(@doc1.specialty)
-    expect(page).to have_content(@doc1.university)
-    expect(page).to_not have_content(@doc2.name)
-  end
-
-  it "has the hospital name for the doctor" do
-    visit doctor_path(@doc1)
+  it "has hospital names" do
+    visit hospital_path(@hospital)
 
     expect(page).to have_content(@hospital.name)
     expect(page).to_not have_content(@hospital2.name)
   end
 
-  it "has the name of all the doctors patients" do
-    visit doctor_path(@doc1)
+  it "has the number of doctors affiliated with the hospital" do
+    visit hospital_path(@hospital)
 
-    expect(page).to have_content(@patient1.name)
-    expect(page).to have_content(@patient2.name)
-    expect(page).to have_content(@patient3.name)
-    expect(page).to have_content(@patient4.name)
-    expect(page).to_not have_content(@patient5.name)
+    within "#doc_count" do
+      expect(page).to have_content(4)
+    end
+  end
+
+  it "has a unique list of universities pertaining to doctors" do
+    visit hospital_path(@hospital)
+
+    expect(page).to have_content(@doc1.university)
+    expect(page).to have_content(@doc2.university)
+    expect(page).to have_content(@doc3.university, count: 1)
+    expect(page).to_not have_content(@doc5.university)
   end
 end
