@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/doctor/:id', to: 'doctors#show'
+  get '/hospital/:id', to: 'hospitals#show'
 end
