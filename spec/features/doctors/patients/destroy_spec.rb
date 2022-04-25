@@ -1,7 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'the doctor show page', type: :feature do
-  before do
+RSpec.describe 'the doctor show page removing a patient' do
+
+  it 'next to each patients name is a button to remove that patient, when I click that button for one patient I am brought back to the doctors show page and I no longer see that patients name listed' do
+
     hospital_1 = Hospital.create!(name: "General Hospital")
     doctor_1 = hospital_1.doctors.create!(name: "Garth Marengi", specialty: "Emergency Medicine", university: "Darkplace University")
     patient_1 = Patient.create!(name: "Alex", age: 38)
@@ -15,25 +17,16 @@ RSpec.describe 'the doctor show page', type: :feature do
     doc_pat_4 = DoctorPatient.create!(doctor_id: doctor_1.id, patient_id: patient_4.id)
     doc_pat_5 = DoctorPatient.create!(doctor_id: doctor_1.id, patient_id: patient_5.id)
 
-    # visit "/doctors/#{doctor_1.id}"
-    # require 'pry'; binding.pry
+        # visit "/doctors/#{doctor_1.id}"
+        # require 'pry'; binding.pry
     visit doctor_path(doctor_1)
-  end
 
-  it 'I see all of that doctors information and the name of the hospital where this doctor works and all of the names of the patients this doctor has' do
-    expect(page).to have_content("Garth Marengi")
-    expect(page).to have_content("Emergency Medicine")
-    expect(page).to have_content("Darkplace University")
-    expect(page).to have_content("General Hospital")
 
     within("#patients") do
-      expect(page).to have_content("Alex")
-      expect(page).to have_content("Bob")
-      expect(page).to have_content("Chuck")
-      expect(page).to have_content("Monica")
-      expect(page).to have_content("Jessica")
+      expect(page).to have_button("Remove Alex")
+      click_button("Remove Alex")
+      expect(current_path).to eq(doctor_path(doctor_1.id))
+      expect(page).to_not have_content("Alex")
     end
   end
-
-
-end
+end 
