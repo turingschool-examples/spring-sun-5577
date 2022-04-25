@@ -1,0 +1,5 @@
+<h1>Hospital Name: <%= @hospital.name %></h1>
+<h3>Doctors Staffed: <%= @hospital.doctors.count %></h3>
+<h3>Universities of Staffed Doctors:</h3><% @hospital.alma_mater.each do |uni| %>
+<%= uni %><br><br>
+<% end %>

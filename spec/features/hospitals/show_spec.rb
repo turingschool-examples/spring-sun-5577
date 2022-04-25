@@ -1,6 +1,7 @@
 require 'rails_helper'
+require 'pry'
 
-RSpec.describe Hospital do
+RSpec.describe 'hospital show page' do
 
   before :each do
     @hospital1 = Hospital.create!(name: "St. Judes")
@@ -17,22 +18,20 @@ RSpec.describe Hospital do
     @patient5 = Patient.create!(name: "Janice", age: 14)
     @dp1 = DoctorPatient.create!(doctor_id: @doctor1.id, patient_id: @patient1.id)
     @dp2 = DoctorPatient.create!(doctor_id: @doctor1.id, patient_id: @patient2.id)
-  end
-
-  describe 'relationships' do
-    it { should have_many(:doctors) }
-  end
-
-  describe "validations" do
-    it { should validate_presence_of(:name) }
-  end
-
-  describe "instance methods" do
-    it "gets the alma mater of all the doctors at the hospital" do
-
-      expect(@hospital1.alma_mater).to eq(["Armstrong", "Johnson"])
-    end
-
 
   end
+
+  it "shows the hospitals and the alma mater of the staffed doctors" do
+    visit "/hospitals/#{@hospital1.id}"
+
+    expect(page).to have_content(@hospital1.name)
+    expect(page).to have_content(4)
+    expect(page).to have_content("Armstrong")
+    expect(page).to have_content("Johnson")
+    expect(page).to have_no_content(@hospital2.name)
+    expect(page).to have_no_content(@doctor5.university)
+  end
+
+
+
 end
