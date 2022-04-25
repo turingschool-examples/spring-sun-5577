@@ -15,7 +15,7 @@ RSpec.describe Doctor do
       @doctor1 = @hospital.doctors.create!(name: "Alex Trebek", specialty: "Feet", university: "Florida State")
       @doctor4 = @hospital.doctors.create!(name: "Prue Hallowell", specialty: "Cancer", university: "Metro State")
 
-      expect(@hospital.doctors.list_of_uni).to eq([@doctor1.university, @doctor2.university, @doctor3.university])
+      expect(@hospital.doctors.list_of_uni).to eq(["Maine University", "Metro State", "Florida State"])
     end
   end
 end
