@@ -1,13 +1,16 @@
 require 'rails_helper'
+require 'pry'
 
-RSpec.describe 'doctor show page' do
+RSpec.describe 'hospital show page' do
 
   before :each do
     @hospital1 = Hospital.create!(name: "St. Judes")
     @hospital2 = Hospital.create!(name: "Hospice")
     @doctor1 = @hospital1.doctors.create!(name: "Cory", specialty: "Bones", university: "Armstrong")
     @doctor2 = @hospital1.doctors.create!(name: "Sherman", specialty: "Skin", university: "Johnson")
-    @doctor3 = @hospital2.doctors.create!(name: "Kim", specialty: "Cancer", university: "Xing")
+    @doctor3 = @hospital1.doctors.create!(name: "Will", specialty: "Skin", university: "Johnson")
+    @doctor4 = @hospital1.doctors.create!(name: "Chris", specialty: "Skin", university: "Johnson")
+    @doctor5 = @hospital2.doctors.create!(name: "Kim", specialty: "Cancer", university: "Xing")
     @patient1 = Patient.create!(name: "Susan", age: 10)
     @patient2 = Patient.create!(name: "Ben", age: 11)
     @patient3 = Patient.create!(name: "Alice", age: 12)
@@ -18,18 +21,15 @@ RSpec.describe 'doctor show page' do
 
   end
 
-  it "displays the doctor's information and their patients" do
-    visit "/doctors/#{@doctor1.id}"
+  it "shows the hospitals and the alma mater of the staffed doctors" do
+    visit "/hospitals/#{@hospital1.id}"
 
-    expect(page).to have_content(@doctor1.name)
-    expect(page).to have_content(@doctor1.specialty)
-    expect(page).to have_content(@doctor1.university)
-    expect(page).to have_content(@patient1.name)
-    expect(page).to have_content(@patient2.name)
-    expect(page).to have_no_content(@doctor2.name)
-    expect(page).to have_no_content(@doctor3.name)
-    expect(page).to have_no_content(@patient3.name)
-    expect(page).to have_no_content(@patient4.name)
+    expect(page).to have_content(@hospital1.name)
+    expect(page).to have_content(4)
+    expect(page).to have_content("Armstrong")
+    expect(page).to have_content("Johnson")
+    expect(page).to have_no_content(@hospital2.name)
+    expect(page).to have_no_content(@doctor5.university)
   end
 
 
