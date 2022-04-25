@@ -25,7 +25,7 @@ RSpec.describe 'the doctor show page' do
         expect(page).to have_content("Daver")
         expect(page).to_not have_content("Patty")
     end
-   it 'shows name of hospitol for a doctor' do
+   it 'shows name of hospital for a doctor' do
       hospital = Hospital.create!(name: "Grey Sloan Memorial Hospital")
       hospital2 = Hospital.create!(name: "Turing Hospital")
       timmy = hospital2.doctors.create!(name: "Timmy", specialty: "Butts", university: "Turing University")
@@ -35,7 +35,6 @@ RSpec.describe 'the doctor show page' do
       patient2 = bailey.patients.create!(name:"Daver", age:37)
       patient3 = mcdreamy.patients.create!(name:"Patty", age:69)
         visit "doctors/#{bailey.id}"
-        save_and_open_page
         expect(page).to have_content("Grey Sloan Memorial Hospital")
         expect(page).to_not have_content("Turing Hospital")
     end

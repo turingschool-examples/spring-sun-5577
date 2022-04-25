@@ -8,7 +8,7 @@ RSpec.describe 'the hospital show page' do
     ploppy= hospital.doctors.create!(name: "Ploppy Gutcutter", specialty: "Gore", university: "Power Butcher University")
     duke = hospital.doctors.create!(name: "Duke Gutcutter", specialty: "Gore", university: "Oregon State University")
       visit "hospitals/#{hospital.id}"
-      expect(page).to have_content("Number of Doctors: 3")
+      expect(page).to have_content("Number of Doctors: 4")
   end
 
  it 'shows unique list of universitys' do
