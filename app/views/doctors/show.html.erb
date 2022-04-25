@@ -7,3 +7,12 @@
     <p>Specaility: <%= @doctor.hospital.name %></p>
   </h3>
 </div>
+<hr>
+
+<h1>Patients:</h1>
+<div id="patients">
+  <% @doctor.patients.each do |patient| %>
+    <h2><%= patient.name %></h2>
+     <p>Age: <%= patient.age %></p>
+  <% end %>
+</div>
