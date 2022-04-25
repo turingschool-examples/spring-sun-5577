@@ -10,13 +10,13 @@ RSpec.describe "Patients Index page" do
   end
 
   describe "when I visit the index page" do
-    xit "displays the names of all patients" do
+    it "displays the names of all patients" do
       expect(page).to have_content("Joseph D")
       expect(page).to have_content("Lee K")
       expect(page).to have_content("Megan G")
     end
 
-    xit "orders by age" do
+    it "orders by age" do
       expect("Megan G").to appear_before("Lee K")
       expect("Lee K").to appear_before("Joseph D")
     end
