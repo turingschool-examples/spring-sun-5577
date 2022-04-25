@@ -47,4 +47,16 @@ RSpec.describe "Doctor show page" do
       end
     end
   end
+
+  describe 'User story 3' do
+    it 'has button to remove patient' do
+      within("#patients") do
+        click_button "Delete #{@patient1.name}"
+
+        expect(current_path).to eq("/doctor/#{@doctor1.id}")
+
+        expect(page).to_not have_content(@patient1.name)
+      end
+    end
+  end
 end
