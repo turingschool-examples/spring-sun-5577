@@ -18,16 +18,14 @@ RSpec.describe "Doctor Show Page" do
 
     visit doctor_path(doctor1.id)
 
-    expect(page).to have_content("Miranda Bailey")
-    expect(page).to have_content("General Surgery")
-    expect(page).to have_content("Stanford University")
-    expect(page).to have_content("Grey Sloan Memorial Hospital")
-    expect(page).to have_content("Patients: John Elway, Terrell Davis")
-    expect(page).to_not have_content("David Chow")
-    expect(page).to_not have_content("Brain Surgery")
-    expect(page).to_not have_content("Oregon University")
-    expect(page).to_not have_content("Denver General Hospital")
-    expect(page).to_not have_content("Patients: Rod Smith")
+    expect(page).to have_content(doctor1.name)
+    expect(page).to have_content(doctor1.specialty)
+    expect(page).to have_content(doctor1.university)
+    expect(page).to have_content(hospital1.name)
+    expect(page).to have_content(patient1.name)
+    expect(page).to have_content(patient2.name)
+    expect(page).to_not have_content(doctor2.name)
+    expect(page).to_not have_content(patient3.name)
   end
 
   it "has button to delete a patient that deletes patient" do
@@ -46,6 +44,34 @@ RSpec.describe "Doctor Show Page" do
     visit doctor_path(doctor1.id)
 
     expect(page).to have_button("Delete John Elway")
+
+    expect(page).to have_content("John Elway")
+    expect(page).to have_content("Terrell Davis")
+    expect(page).to have_content("Rod Smith")
+
+    click_button "Delete John Elway"
+
+    expect(page).to have_content("Terrell Davis")
+    expect(page).to have_content("Rod Smith")
+    expect(page).to_not have_content("John Elway")
+  end
+
+  it "has button to create a patient" do
+    hospital1 = Hospital.create!(name: "Grey Sloan Memorial Hospital")
+
+    doctor1 = hospital1.doctors.create!(name: "Miranda Bailey", specialty: "General Surgery", university: "Stanford University")
+
+    patient1 = Patient.create!(name: "John Elway", age: 66)
+    patient2 = Patient.create!(name: "Terrell Davis", age: 52)
+    patient3 = Patient.create!(name: "Rod Smith", age: 55)
+
+    DoctorPatient.create!(doctor: doctor1, patient: patient1)
+    DoctorPatient.create!(doctor: doctor1, patient: patient2)
+    DoctorPatient.create!(doctor: doctor1, patient: patient3)
+
+    visit doctor_path(doctor1.id)
+
+    expect(page).to have_button("Create Patient")
 
     expect(page).to have_content("John Elway")
     expect(page).to have_content("Terrell Davis")
