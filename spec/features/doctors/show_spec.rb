@@ -71,7 +71,7 @@ RSpec.describe "Doctor Show Page" do
 
     visit doctor_path(doctor1.id)
 
-    expect(page).to have_button("Create Patient")
+    expect(page).to have_button("Delete John Elway")
 
     expect(page).to have_content("John Elway")
     expect(page).to have_content("Terrell Davis")
