@@ -1,0 +1,13 @@
+<h1>Hospital Info:</h1>
+<p><strong>Name:</strong> <%= @hospital.name %></p>
+<p><strong>Number of Doctors:</strong> <%= @hospital.doctors.count %></p>
+
+<p><strong>Universities Doctors Attended:</strong> 
+	<% @hospital.unique_universities.each_with_index do|university, index| %>
+	<% if index == @hospital.unique_universities.count-1 %>
+		<%= university %>
+	<% else %>
+		<%= university %>, 
+	<% end %>
+<% end %></p>
+
