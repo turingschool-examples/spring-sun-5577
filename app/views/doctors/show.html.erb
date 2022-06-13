@@ -1,0 +1,13 @@
+<h1><%= @doctor.name %></h1>
+<h3>Works at: <%= @doctor.hospital.name %></h3>
+
+<p><strong>Specialty:</strong> <%= @doctor.specialty %></p>
+<p><strong>University:</strong> <%= @doctor.university %></p>
+
+<h3>Patients:</h3>
+<% @doctor.patients.each do |patient| %>
+  <div id="patient-<%= patient.id %>">
+    <p><%= patient.name %></p>
+    <%= link_to "Remove #{patient.name}", "/doctors/#{@doctor.id}/patients/#{patient.id}/destroy" %>
+  </div>
+<% end %>
